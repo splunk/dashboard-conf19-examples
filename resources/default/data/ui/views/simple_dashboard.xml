@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view template="dashboard_conf19_examples:/templates/dashboard.html" type="html">
+    <label>Simple Dashboard</label>
+</view>
