@@ -1,0 +1,5 @@
+<nav color="#171d21">
+    <collection label="Basic Examples">
+        <view name="simple_dashboard" default="true"/>
+    </collection>    
+</nav>
