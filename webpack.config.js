@@ -17,6 +17,9 @@ module.exports = {
     output: {
         path: jsBuildDir,
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
     module: {
         rules: [
             {

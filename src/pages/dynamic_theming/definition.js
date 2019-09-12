@@ -25,7 +25,6 @@ export default {
         options: {
             padding: 20,
             margin: 10,
-            backgroundColor: '#eff0f1',
         },
         structure: [
             {
@@ -63,9 +62,7 @@ export default {
         sv_total_event: {
             title: '_internal event count',
             type: 'viz.singlevalue',
-            options: {
-                backgroundColor: '#ffffff',
-            },
+            options: {},
             dataSources: {
                 primary: 'total_count_search',
             },
