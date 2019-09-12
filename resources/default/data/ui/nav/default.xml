@@ -1,5 +1,6 @@
 <nav color="#171d21">
     <collection label="Basic Examples">
-        <view name="simple_dashboard" default="true"/>
+        <view name="grid_dashboard" default="true"/>
+        <view name="dynamic_theming"/>
     </collection>    
 </nav>
