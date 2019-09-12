@@ -1,9 +1,8 @@
 {
     "name": "dashboard-conf19-examples",
-    "version": "1.0.0",
-    "main": "index.js",
+    "version": "0.0.1",
     "repository": "git@github.com:splunk/dashboard-conf19-examples.git",
-    "author": "Michael Luo <mluo@splunk.com>",
+    "author": "dashboard team at Splunk <dashboards@splunk.com>",
     "license": "MIT",
     "scripts": {
         "build": "npm run prepare && cross-env NODE_ENV=production webpack --config ./webpack.config.js --bail",
@@ -29,7 +28,9 @@
         "eslint-plugin-react-hooks": "^1.7.0",
         "prettier": "^1.18.2",
         "webpack": "^4.39.3",
-        "webpack-cli": "^3.3.8"
+        "webpack-cli": "^3.3.8",
+        "fs-extra": "^8.1.0",
+        "lodash.template": "^4.5.0"
     },
     "dependencies": {
         "@babel/polyfill": "^7.6.0",
@@ -39,7 +40,6 @@
         "@splunk/datasources": "^7.1.0",
         "@splunk/react-page": "^2.1.0",
         "@splunk/react-ui": "^2.12.1",
-        "fs-extra": "^8.1.0",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
         "styled-components": "^4.3.2"
