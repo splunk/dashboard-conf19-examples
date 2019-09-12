@@ -1,4 +1,3 @@
-import '@babel/polyfill';
 import React from 'react';
 import layout from '@splunk/react-page';
 import DashboardCore from '@splunk/dashboard-core';
