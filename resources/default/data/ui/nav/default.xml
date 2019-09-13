@@ -4,4 +4,7 @@
         <view name="absolute_dashboard"/>
         <view name="dynamic_theming"/>
     </collection>    
+    <collection label="Advanced Examples">
+        <view name="custom_data_source"/>
+    </collection>
 </nav>
