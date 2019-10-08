@@ -8,8 +8,8 @@
         "build": "npm run prepare && cross-env NODE_ENV=production webpack --config ./webpack.config.js --bail",
         "package": "echo package",
         "symlink": "node ./tools/symlink",
-        "prepare": "node ./tools/prepare",
-        "dev": "npm run prepare && npm run symlink && cross-env NODE_ENV=development webpack --config ./webpack.config.js --watch",
+        "prepare_splunk": "node ./tools/prepare",
+        "dev": "npm run prepare_splunk && npm run symlink && cross-env NODE_ENV=development webpack --config ./webpack.config.js --watch",
         "lint": "cross-env eslint src"
     },
     "devDependencies": {
@@ -26,21 +26,25 @@
         "eslint-plugin-prettier": "^3.1.0",
         "eslint-plugin-react": "^7.14.3",
         "eslint-plugin-react-hooks": "^1.7.0",
+        "fs-extra": "^8.1.0",
+        "lodash.template": "^4.5.0",
         "prettier": "^1.18.2",
         "webpack": "^4.39.3",
-        "webpack-cli": "^3.3.8",
-        "fs-extra": "^8.1.0",
-        "lodash.template": "^4.5.0"
+        "webpack-cli": "^3.3.8"
     },
     "dependencies": {
         "@babel/polyfill": "^7.6.0",
-        "@splunk/dashboard-context": "^7.1.0",
-        "@splunk/dashboard-core": "^7.1.0",
-        "@splunk/dashboard-presets": "^7.1.0",
-        "@splunk/datasources": "^7.1.0",
+        "@splunk/dashboard-context": "^7.4.1",
+        "@splunk/dashboard-core": "^7.4.1",
+        "@splunk/dashboard-presets": "^7.4.1",
+        "@splunk/dashboard-visualizations": "^8.0.0",
+        "@splunk/datasources": "^7.4.1",
         "@splunk/react-page": "^2.1.0",
         "@splunk/react-ui": "^2.12.1",
+        "@splunk/splunk-utils": "^1.2.1",
+        "chart.js": "^2.8.0",
         "react": "^16.9.0",
+        "react-chartjs-2": "^2.8.0",
         "react-dom": "^16.9.0",
         "styled-components": "^4.3.2"
     }
