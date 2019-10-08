@@ -3,8 +3,13 @@
         <view name="grid_dashboard" default="true"/>
         <view name="absolute_dashboard"/>
         <view name="dynamic_theming"/>
+        <view name="visualizations"/>
     </collection>    
     <collection label="Advanced Examples">
         <view name="custom_data_source"/>
+        <view name="buttercup"/>
+        <view name="data_center"/>
+        <view name="glasstable"/>
+        <view name="radar"/>
     </collection>
 </nav>
