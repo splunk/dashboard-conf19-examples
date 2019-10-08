@@ -37,9 +37,8 @@ const walkDir = dir => {
 const copyAndReplace = (source, dist) => {
     const files = walkDir(source);
     files.forEach(f => {
-        let content = fs.readFileSync(f, 'utf-8');
-        // skip html file as they're mako template
-        if (path.extname(f) !== '.html') {
+        let content = fs.readFileSync(f);
+        if (path.extname(f) === '.xml') {
             const compiled = template(content);
             content = compiled(resourceMeta);
         }
