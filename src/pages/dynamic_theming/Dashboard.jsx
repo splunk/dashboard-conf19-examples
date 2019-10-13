@@ -3,7 +3,9 @@ import Select from '@splunk/react-ui/Select';
 import styled, { ThemeProvider } from 'styled-components';
 import { themes as reactUIThemes } from '@splunk/react-ui/themes';
 import DashboardCore, { themes as dashboardCoreThemes } from '@splunk/dashboard-core';
-import EnterprisePreset, { themes as presetThemes } from '@splunk/dashboard-presets/EnterprisePreset';
+import EnterpriseViewOnlyPreset, {
+    themes as presetThemes,
+} from '@splunk/dashboard-presets/EnterpriseViewOnlyPreset';
 import definition from './definition';
 
 const Container = styled.div`
@@ -52,7 +54,7 @@ class Dashboard extends Component {
                         width="100%"
                         height="calc(100vh - 78px)"
                         definition={definition}
-                        preset={EnterprisePreset}
+                        preset={EnterpriseViewOnlyPreset}
                     />
                 </Container>
             </ThemeProvider>
