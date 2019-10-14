@@ -1,17 +1,21 @@
 <nav color="#171d21">
     <collection label="Basic Examples">
-        <view name="grid_dashboard" default="true"/>
-        <view name="absolute_dashboard"/>
+        <view name="absolute_dashboard" default="true"/>
         <view name="dynamic_theming"/>
         <view name="visualizations"/>
-    </collection>    
+    </collection>
     <collection label="Advanced Examples">
-        <view name="custom_data_source"/>
         <view name="buttercup"/>
         <view name="data_center"/>
         <view name="glasstable"/>
-        <view name="radar"/>
         <view name="sfo_airport"/>
         <view name="boston_marathon"/>
+    </collection>
+    <collection label="Custom Visualizations">
+        <view name="radar"/>
+        <view name="donut"/>
+    </collection>
+    <collection label="Custom DataSources">
+        <view name="custom_data_source"/>
     </collection>
 </nav>
