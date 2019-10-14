@@ -3,14 +3,16 @@ import layout from '@splunk/react-page';
 import { ThemeProvider } from 'styled-components';
 import { themes as reactUIThemes } from '@splunk/react-ui/themes';
 import DashboardCore, { themes as dashboardCoreThemes } from '@splunk/dashboard-core';
-import EnterprisePreset, { themes as presetThemes } from '@splunk/dashboard-presets/EnterprisePreset';
+import EnterpriseViewOnlyPreset, {
+    themes as presetThemes,
+} from '@splunk/dashboard-presets/EnterpriseViewOnlyPreset';
 import Radar from './Radar';
 import definition from './definition';
 
 const CustomPreset = {
-    ...EnterprisePreset,
+    ...EnterpriseViewOnlyPreset,
     visualizations: {
-        ...EnterprisePreset.visualizations,
+        ...EnterpriseViewOnlyPreset.visualizations,
         'viz.radar': Radar,
     },
 };
@@ -32,7 +34,7 @@ layout(
         />
     </ThemeProvider>,
     {
-        pageTitle: 'Radar Visualization',
+        pageTitle: 'Radar Chart',
         hideFooter: true,
         layout: 'fixed',
     }
