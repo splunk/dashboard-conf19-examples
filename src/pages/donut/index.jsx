@@ -7,6 +7,15 @@ import EnterpriseViewOnlyPreset, {
     themes as presetThemes,
 } from '@splunk/dashboard-presets/EnterpriseViewOnlyPreset';
 import definition from './definition';
+import Donut from './Donut';
+
+const CustomPreset = {
+    ...EnterpriseViewOnlyPreset,
+    visualizations: {
+        ...EnterpriseViewOnlyPreset.visualizations,
+        'viz.donut': Donut,
+    },
+};
 
 const themeKey = 'enterpriseDark';
 const theme = {
@@ -21,11 +30,11 @@ layout(
             width="100%"
             height="calc(100vh - 78px)"
             definition={definition}
-            preset={EnterpriseViewOnlyPreset}
+            preset={CustomPreset}
         />
     </ThemeProvider>,
     {
-        pageTitle: 'San Francisco Airport Dashboard',
+        pageTitle: 'D3 Donut Chart',
         hideFooter: true,
         layout: 'fixed',
     }
