@@ -12,5 +12,6 @@
         <view name="glasstable"/>
         <view name="radar"/>
         <view name="sfo_airport"/>
+        <view name="emergency_department_ops"/>
     </collection>
 </nav>
