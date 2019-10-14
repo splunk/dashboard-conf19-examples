@@ -1,7 +1,7 @@
 import React from 'react';
 import layout from '@splunk/react-page';
 import DashboardCore from '@splunk/dashboard-core';
-import EnterprisePreset from '@splunk/dashboard-presets/EnterprisePreset';
+import EnterpriseViewOnlyPreset from '@splunk/dashboard-presets/EnterpriseViewOnlyPreset';
 import definition from './definition';
 
 // use DashboardCore to render a simple dashboard
@@ -10,7 +10,7 @@ layout(
         width="100%"
         height="calc(100vh - 78px)"
         definition={definition}
-        preset={EnterprisePreset}
+        preset={EnterpriseViewOnlyPreset}
     />,
     {
         pageTitle: 'Absolute Layout Dashboard',
