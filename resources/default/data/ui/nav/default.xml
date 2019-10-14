@@ -12,5 +12,6 @@
         <view name="glasstable"/>
         <view name="radar"/>
         <view name="sfo_airport"/>
+        <view name="boston_marathon"/>
     </collection>
 </nav>
