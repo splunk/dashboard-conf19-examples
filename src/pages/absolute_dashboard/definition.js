@@ -1,117 +1,109 @@
 export default {
     dataSources: {
-        warning_over_time: {
-            name: 'warning count over time',
+        total_count_search: {
             type: 'ds.search',
             options: {
-                query: 'index=_internal warning | timechart count',
+                query: 'index=_internal | stats count',
                 queryParameters: {
-                    latest: 'now',
-                    earliest: '-7d',
+                    earliest: '$time.earliest$',
+                    latest: '$time.latest$',
                 },
             },
         },
-        error_over_time: {
-            name: 'error count over time',
+        event_by_component_search: {
             type: 'ds.search',
             options: {
-                query: 'index=_internal error | timechart count',
+                query: 'index=_internal | stats count by component',
                 queryParameters: {
-                    latest: 'now',
-                    earliest: '-7d',
+                    earliest: '$time.earliest$',
+                    latest: '$time.latest$',
                 },
             },
         },
-        count_over_time: {
-            name: 'count over time',
+        timechart_search: {
             type: 'ds.search',
             options: {
                 query: 'index=_internal | timechart count',
                 queryParameters: {
-                    latest: 'now',
-                    earliest: '-7d',
+                    earliest: '$time.earliest$',
+                    latest: '$time.latest$',
                 },
             },
         },
     },
-    inputs: {},
+    inputs: {
+        time_range: {
+            options: {
+                defaultValue: '0,now',
+                token: 'time',
+            },
+            type: 'input.timerange',
+        },
+    },
     layout: {
         type: 'absolute',
         options: {
-            width: 1200,
-            height: 600,
+            width: 1600,
+            height: 800,
+            backgroundColor: '#eff0f1',
+            display: 'auto-scale',
         },
+        globalInputs: ['time_range'],
         structure: [
             {
-                item: 'text1',
-                type: 'block',
+                item: 'sv_total_event',
                 position: {
-                    h: 50,
-                    w: 490,
-                    x: 20,
-                    y: 10,
+                    h: 300,
+                    w: 750,
+                    x: 30,
+                    y: 20,
                 },
             },
             {
-                item: 'line_chart',
-                type: 'block',
+                item: 'sv_event_by_component',
                 position: {
-                    h: 350,
-                    w: 1080,
-                    x: 20,
-                    y: 70,
+                    h: 300,
+                    w: 750,
+                    x: 820,
+                    y: 20,
                 },
             },
             {
-                item: 'sv_warning',
-                type: 'block',
+                item: 'event_over_time',
                 position: {
-                    h: 150,
-                    w: 150,
-                    x: 150,
-                    y: 150,
-                },
-            },
-            {
-                item: 'sv_error',
-                type: 'block',
-                position: {
-                    h: 150,
-                    w: 150,
-                    x: 300,
-                    y: 150,
+                    h: 300,
+                    w: 1540,
+                    x: 30,
+                    y: 350,
                 },
             },
         ],
     },
-    title: 'Absolute Dashboard',
+    title: 'Simple Dashboard',
     description: '',
     visualizations: {
-        line_chart: {
-            title: 'total count',
+        sv_total_event: {
+            title: '_internal event count',
+            type: 'viz.singlevalue',
+            options: {
+                backgroundColor: '#ffffff',
+            },
+            dataSources: {
+                primary: 'total_count_search',
+            },
+        },
+        sv_event_by_component: {
+            title: '_internal event count by component',
+            type: 'viz.pie',
+            dataSources: {
+                primary: 'event_by_component_search',
+            },
+        },
+        event_over_time: {
+            title: '_internal event count over time',
             type: 'viz.area',
             dataSources: {
-                primary: 'count_over_time',
-            },
-        },
-        sv_error: {
-            title: 'error count',
-            type: 'viz.singlevalueradial',
-            dataSources: {
-                primary: 'error_over_time',
-            },
-        },
-        text1: {
-            type: 'viz.text',
-            options: {
-                content: 'You can place one widget on top of another',
-            },
-        },
-        sv_warning: {
-            title: 'warning count',
-            type: 'viz.singlevalueradial',
-            dataSources: {
-                primary: 'warning_over_time',
+                primary: 'timechart_search',
             },
         },
     },
