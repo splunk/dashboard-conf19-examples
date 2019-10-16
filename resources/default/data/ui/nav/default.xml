@@ -6,8 +6,6 @@
     </collection>
     <collection label="Advanced Examples">
         <view name="buttercup"/>
-        <view name="data_center"/>
-        <view name="glasstable"/>
         <view name="sfo_airport"/>
         <view name="boston_marathon"/>
     </collection>
