@@ -7,7 +7,7 @@ import EnterpriseViewOnlyPreset, {
     themes as presetThemes,
 } from '@splunk/dashboard-presets/EnterpriseViewOnlyPreset';
 import Radar from './Radar';
-import definition from './definition';
+import definition from './definition.json';
 
 const CustomPreset = {
     ...EnterpriseViewOnlyPreset,
