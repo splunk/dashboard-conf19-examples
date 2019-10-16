@@ -6,7 +6,7 @@ import DashboardCore, { themes as dashboardCoreThemes } from '@splunk/dashboard-
 import EnterpriseViewOnlyPreset, {
     themes as presetThemes,
 } from '@splunk/dashboard-presets/EnterpriseViewOnlyPreset';
-import definition from './definition';
+import definition from './definition.json';
 
 const themeKey = 'enterpriseDark';
 const theme = {
