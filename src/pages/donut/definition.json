@@ -15,9 +15,15 @@
         "type": "absolute",
         "options": {},
         "structure": [
-            { "item": "viz1", "type": "block", "position": { "h": 250, "w": 600, "x": 30, "y": 30 } }
+            { "item": "viz_text", "type": "block", "position": { "h": 340, "w": 370, "x": 50, "y": 30 } },
+            { "item": "viz_donut", "type": "block", "position": { "h": 250, "w": 600, "x": 430, "y": 30 } }
         ]
     },
     "description": "",
-    "visualizations": { "viz1": { "type": "viz.donut", "options": {}, "dataSources": { "primary": "ds_1" } } }
+    "visualizations": {
+        "viz_text": {
+            "type": "viz.text",
+            "options": { "content": "D3 Donut", "fontSize": 40, "backgroundColor": "transparent" }
+        },
+        "viz_donut": { "type": "viz.donut", "options": {}, "dataSources": { "primary": "ds_1" } } }
 }
