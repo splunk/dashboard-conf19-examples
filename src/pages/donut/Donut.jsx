@@ -52,7 +52,7 @@ const drawChart = ({ data = null, width, height: initialHeight, options }) => {
     const node = document.createElement('div');
     const { value } = data;
     const height = initialHeight - 25;
-    const radius = Math.min(width, height) / 2;
+    const radius = Math.min(width, height) / 2.5;
 
     const colorScheme = options.colorScheme || 'schemeCategory10';
     const color = d3.scaleOrdinal(d3[colorScheme]);
@@ -111,7 +111,7 @@ const drawChart = ({ data = null, width, height: initialHeight, options }) => {
     //     .append('rect')
     //     .attr('width', 10)
     //     .attr('height', 8)
-    //     .attr('x', 80)
+    //     .attr('x', radius)
     //     .attr('y', (d, i) => i * 10)
     //     .attr('fill', (d, i) => color(i));
 
@@ -119,7 +119,7 @@ const drawChart = ({ data = null, width, height: initialHeight, options }) => {
     //     .append('text')
     //     .attr('fill', 'white')
     //     .style('font-size', 10)
-    //     .attr('x', 100)
+    //     .attr('x', radius + 12)
     //     .attr('y', (d, i) => i * 10)
     //     .attr('dy', '0.8em')
     //     .text(d => d);
