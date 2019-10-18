@@ -1,6 +1,6 @@
 {
     "dataSources": {
-        "ds_1": {
+        "ds_radar": {
             "type": "ds.test",
             "options": {
                 "data": {
@@ -21,17 +21,19 @@
     "inputs": {},
     "layout": {
         "type": "absolute",
-        "options": {},
+        "options": {
+            "display": "auto-scale"
+        },
         "structure": [
             {
                 "item": "viz_aeTdCp9A",
                 "type": "block",
-                "position": { "h": 540, "w": 740, "x": 430, "y": 30 }
+                "position": { "h": 400, "w": 740, "x": 430, "y": 30 }
             },
             { "item": "viz_EvMPCkP5", "type": "block", "position": { "h": 340, "w": 370, "x": 50, "y": 30 } }
         ]
     },
-    "title": "Copy of Pete's a Pie",
+    "title": "Radar Chart",
     "description": "",
     "visualizations": {
         "viz_EvMPCkP5": {
@@ -40,8 +42,11 @@
         },
         "viz_aeTdCp9A": {
             "type": "viz.radar",
-            "options": { "legend": true },
-            "dataSources": { "primary": "ds_1" }
+            "options": {
+                "legend": true,
+                "legendPosition": "right"
+            },
+            "dataSources": { "primary": "ds_radar" }
         }
     }
 }

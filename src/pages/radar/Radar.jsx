@@ -80,9 +80,10 @@ const RadarViz = ({ options, width, height, dataSources }) => {
 
     // Provide some defaults for chart options
     const displayLegend = options.legend === undefined ? true : !!options.legend;
-    const legendPosition = ['top', 'bottom', 'left', 'right'].includes(options.legendPosition)
-        ? 'top'
-        : options.legendPosition;
+    const legendPosition =
+        options.legendPosition && ['top', 'bottom', 'left', 'right'].includes(options.legendPosition)
+            ? options.legendPosition
+            : 'top';
 
     return (
         <Radar
