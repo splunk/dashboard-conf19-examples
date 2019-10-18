@@ -385,15 +385,15 @@
             "layoutItemBackgroundColor": "transparent"
         },
         "structure": [
-            { "item": "yoy_engagement_growth", "position": { "h": 70, "w": 80, "x": 110, "y": 110 } },
-            { "item": "yoy_player_growth", "position": { "h": 70, "w": 80, "x": 110, "y": 430 } },
+            { "item": "yoy_engagement_growth", "position": { "h": 70, "w": 80, "x": 113, "y": 113 } },
+            { "item": "yoy_player_growth", "position": { "h": 70, "w": 80, "x": 113, "y": 433 } },
             { "item": "top_score", "position": { "h": 50, "w": 200, "x": 380, "y": 330 } },
             { "item": "total_users", "position": { "h": 60, "w": 220, "x": 370, "y": 240 } },
             { "item": "leader_board", "position": { "h": 140, "w": 390, "x": 1110, "y": 160 } },
-            { "item": "punch_card", "position": { "h": 160, "w": 410, "x": 1100, "y": 320 } },
+            { "item": "punch_card", "position": { "h": 145, "w": 400, "x": 1105, "y": 325 } },
             { "item": "total_games", "position": { "h": 100, "w": 360, "x": 670, "y": 190 } },
             { "item": "avg_games_per_user_search", "position": { "h": 110, "w": 350, "x": 680, "y": 327 } },
-            { "item": "last_hour_games", "position": { "h": 140, "w": 410, "x": 650, "y": 460 } },
+            { "item": "last_hour_games", "position": { "h": 140, "w": 350, "x": 680, "y": 460 } },
             { "item": "score_distribution", "position": { "h": 160, "w": 230, "x": 370, "y": 400 } },
             { "item": "games_per_user", "position": { "h": 170, "w": 220, "x": 370, "y": 40 } },
             { "item": "games_per_day", "position": { "h": 90, "w": 390, "x": 1110, "y": 480 } },
@@ -432,7 +432,7 @@
         "leader_board": { "type": "viz.table", "dataSources": { "primary": "leader_search" } },
         "games_per_day": {
             "type": "viz.line",
-            "options": { "backgroundColor": "transparent" },
+            "options": { "backgroundColor": "transparent", "legend.placement": "none" },
             "dataSources": { "primary": "games_per_day" }
         },
         "games_per_user": {
@@ -486,6 +486,9 @@
         "yoy_player_growth": {
             "type": "viz.singlevalue",
             "options": { "backgroundColor": "transparent" },
+            "encoding": {
+                "trend": "primary[0]"
+            },
             "dataSources": { "primary": "yoy_player_growth" }
         },
         "score_distribution": {
@@ -503,6 +506,9 @@
         "yoy_engagement_growth": {
             "type": "viz.singlevalue",
             "options": { "backgroundColor": "transparent" },
+            "encoding": {
+                "trend": "primary[0]"
+            },
             "dataSources": { "primary": "yoy_engagement_growth" }
         },
         "avg_games_per_user_search": {
