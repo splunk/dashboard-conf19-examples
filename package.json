@@ -12,6 +12,23 @@
         "dev": "npm run prepare_splunk && npm run symlink && cross-env NODE_ENV=development webpack --config ./webpack.config.js --watch",
         "lint": "cross-env eslint src"
     },
+    "dependencies": {
+        "@babel/polyfill": "^7.6.0",
+        "@splunk/dashboard-context": "^8.0.3",
+        "@splunk/dashboard-core": "^8.0.3",
+        "@splunk/dashboard-presets": "^8.0.3",
+        "@splunk/dashboard-visualizations": "^9.2.1",
+        "@splunk/react-page": "^2.1.1",
+        "@splunk/react-ui": "^2.13.1",
+        "@splunk/splunk-utils": "^1.2.2",
+        "chart.js": "^2.8.0",
+        "d3": "^5.12.0",
+        "react": "^16.9.0",
+        "react-chartjs-2": "^2.8.0",
+        "react-d3-library": "^1.1.8",
+        "react-dom": "^16.9.0",
+        "styled-components": "^4.3.2"
+    },
     "devDependencies": {
         "@babel/core": "^7.6.0",
         "@babel/preset-env": "^7.6.0",
@@ -31,22 +48,5 @@
         "prettier": "^1.18.2",
         "webpack": "^4.39.3",
         "webpack-cli": "^3.3.8"
-    },
-    "dependencies": {
-        "@babel/polyfill": "^7.6.0",
-        "@splunk/dashboard-context": "^8.0.0",
-        "@splunk/dashboard-core": "^8.0.0",
-        "@splunk/dashboard-presets": "^8.0.0",
-        "@splunk/dashboard-visualizations": "^9.1.1",
-        "@splunk/react-page": "^2.1.1",
-        "@splunk/react-ui": "^2.13.1",
-        "@splunk/splunk-utils": "^1.2.2",
-        "chart.js": "^2.8.0",
-        "d3": "^5.12.0",
-        "react": "^16.9.0",
-        "react-chartjs-2": "^2.8.0",
-        "react-d3-library": "^1.1.8",
-        "react-dom": "^16.9.0",
-        "styled-components": "^4.3.2"
     }
 }
