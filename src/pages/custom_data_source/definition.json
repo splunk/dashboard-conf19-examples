@@ -9,6 +9,9 @@
                     "latest": "now"
                 }
             }
+        },
+        "todo": {
+            "type": "todo"
         }
     },
     "layout": {
@@ -25,6 +28,15 @@
                     "w": 400,
                     "h": 400
                 }
+            },
+            {
+                "item": "myvisualization",
+                "position": {
+                    "x": 500,
+                    "y": 1,
+                    "w": 600,
+                    "h": 600
+                }
             }
         ]
     },
@@ -39,6 +51,12 @@
             },
             "dataSources": {
                 "primary": "total_count_search"
+            }
+        },
+        "myvisualization": {
+            "type": "viz.table",
+            "dataSources": {
+                "primary": "todo"
             }
         }
     }
