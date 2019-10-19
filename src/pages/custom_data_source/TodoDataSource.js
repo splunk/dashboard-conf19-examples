@@ -1,13 +1,13 @@
 import DataSource from '@splunk/datasources/DataSource';
 import DataSet from '@splunk/datasource-utils/DataSet';
-import { todoUrl } from './utils';
+import { url } from './utils';
 
 class TodoDataSource extends DataSource {
     request() {
         return subscriber => {
             (async () => {
                 try {
-                    const response = await fetch(todoUrl);
+                    const response = await fetch(url);
 
                     if (!response.ok) {
                         subscriber.error({
