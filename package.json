@@ -18,6 +18,8 @@
         "@splunk/dashboard-core": "^8.0.3",
         "@splunk/dashboard-presets": "^8.0.3",
         "@splunk/dashboard-visualizations": "^9.2.1",
+        "@splunk/datasource-utils": "^8.0.3",
+        "@splunk/datasources": "^8.0.3",
         "@splunk/react-page": "^2.1.1",
         "@splunk/react-ui": "^2.13.1",
         "@splunk/splunk-utils": "^1.2.2",
