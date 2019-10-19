@@ -340,7 +340,8 @@
 		"type": "absolute",
 		"options": {
 			"width": 1980,
-			"height": 1080,
+            "height": 1080,
+            "display": "auto-scale",
 			"backgroundImage": {
 				"x": 0,
 				"y": 0,
