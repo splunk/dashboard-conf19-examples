@@ -476,7 +476,7 @@
         "viz_q4YzAPyo": {
             "type": "viz.img",
             "options": {
-                "src": "/en-US/static/app/dashboard_conf19_examples/boston_marathon/marathon_map.png",
+                "src": "https://raw.githubusercontent.com/splunk/dashboard-conf19-examples/master/resources/appserver/static/boston_marathon/marathon_map.png",
                 "preserveAspectRatio": true
             }
         }

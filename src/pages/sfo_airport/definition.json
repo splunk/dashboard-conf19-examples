@@ -634,7 +634,7 @@
         },
         "viz_udKqbB9W": {
             "type": "viz.singlevalueicon",
-            "options": { "icon": "splunkx://ck0r9pn8w009u0j2622w5zn7x", "showValue": false }
+            "options": { "showValue": false }
         },
         "viz_vObbtrru": { "type": "abslayout.line", "options": { "strokeColor": "#F6847C" } },
         "viz_vpxtc5ls": { "type": "viz.text", "options": { "color": "#ffffff", "content": "E" } },
