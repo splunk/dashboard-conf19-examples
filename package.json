@@ -5,7 +5,7 @@
     "author": "dashboard team at Splunk <dashboards@splunk.com>",
     "license": "MIT",
     "scripts": {
-        "build": "npm run prepare && cross-env NODE_ENV=production webpack --config ./webpack.config.js --bail",
+        "build": "npm run prepare_splunk && cross-env NODE_ENV=production webpack --config ./webpack.config.js --bail",
         "package": "echo package",
         "symlink": "node ./tools/symlink",
         "prepare_splunk": "node ./tools/prepare",
