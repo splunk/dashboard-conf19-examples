@@ -10,8 +10,8 @@
                 }
             }
         },
-        "todo": {
-            "type": "todo"
+        "mypost": {
+            "type": "post"
         }
     },
     "layout": {
@@ -30,7 +30,7 @@
                 }
             },
             {
-                "item": "myvisualization",
+                "item": "mytable",
                 "position": {
                     "x": 500,
                     "y": 1,
@@ -53,10 +53,10 @@
                 "primary": "total_count_search"
             }
         },
-        "myvisualization": {
+        "mytable": {
             "type": "viz.table",
             "dataSources": {
-                "primary": "todo"
+                "primary": "mypost"
             }
         }
     }
