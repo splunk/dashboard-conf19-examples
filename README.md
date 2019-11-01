@@ -17,3 +17,11 @@
 * Create a new folder under `src/pages/` with the same name of the new xml file.
 * Create `index.jsx` and bootstrap the page using `@splunk/react-page`.
 * Restart Splunk, your new page should shows up.
+
+
+# Package the app
+
+* Run `make build-image` to build the image
+* Run `make run` to package the app with Node etc.
+* Run Splunk with the dashboard app via `make start`
+* Remove all containers `make down`
