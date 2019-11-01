@@ -9,8 +9,9 @@ package-app:
 
 start:
 	docker run -d -v $$PWD/build/dashboard_conf19_examples:/opt/splunk/etc/apps/dashboard_conf19_examples/ -p 8000:8000 -e "SPLUNK_PASSWORD=changemeplease1" -e "SPLUNK_START_ARGS=--accept-license" --name splunk splunk/splunk:8.0
-	open http://localhost:8000
+	@echo "Check 'docker logs splunk' to see the status of the container"
+	@open http://localhost:8000
 
 down:
-	docker rm -f dashboard-builder
-	docker rm -f splunk
+	@docker rm -f builder || true
+	@docker rm -f splunk || true

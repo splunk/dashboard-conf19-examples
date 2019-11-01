@@ -23,5 +23,6 @@
 
 * Run `make build-image` to build the image
 * Run `make run` to package the app with Node etc.
+    * The app (`tgz`) will be created in `splunkapps`
 * Run Splunk with the dashboard app via `make start`
 * Remove all containers `make down`
