@@ -21,8 +21,15 @@
 
 # Package the app
 
-* Run `make build-image` to build the image
-* Run `make run` to package the app with Node etc.
-    * The app (`tgz`) will be created in `splunkapps`
-* Run Splunk with the dashboard app via `make start`
-* Remove all containers `make down`
+Use the following steps to package the Dashboard app. 
+
+Requirements:
+* Make
+* [Docker](https://docs.docker.com/install/)
+
+Steps:
+* Run `make build-image` to build the image to package the app.
+* Run `make run` to package the app with NodeJS.
+    * The app (`tgz`) will be created in the `splunkapps` folder.
+* To start Splunk (`8.0`) with the dashboard app run `make start` (username: `admin` password: `changemeplease1`).
+* Remove all containers run `make down`
