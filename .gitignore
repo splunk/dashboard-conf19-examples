@@ -9,4 +9,4 @@ yarn-error.log
 /build
 .cache
 .node-gyp
-
+/splunkapps
