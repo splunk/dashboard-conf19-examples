@@ -23,7 +23,7 @@
         "@splunk/react-page": "^2.1.1",
         "@splunk/react-ui": "^2.13.1",
         "@splunk/splunk-utils": "^1.2.2",
-        "chart.js": "^2.8.0",
+        "chart.js": "^2.9.4",
         "d3": "^5.12.0",
         "react": "^16.9.0",
         "react-chartjs-2": "^2.8.0",
