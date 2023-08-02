@@ -9,6 +9,7 @@
         <view name="sfo_airport"/>
         <view name="boston_marathon"/>
         <view name="emergency_department_ops"/>
+        <view name="buttercup_spaceport"/>
     </collection>
     <collection label="Custom Visualizations">
         <view name="radar"/>

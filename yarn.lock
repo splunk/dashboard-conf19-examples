@@ -1688,7 +1688,7 @@
     prop-types "^15.6.0"
     react-is "^16.10.0"
 
-"@splunk/react-icons@^3.0.1", "@splunk/react-icons@^3.1.0", "@splunk/react-icons@^3.2.0", "@splunk/react-icons@^3.3.0", "@splunk/react-icons@^3.3.1":
+"@splunk/react-icons@^3", "@splunk/react-icons@^3.0.1", "@splunk/react-icons@^3.1.0", "@splunk/react-icons@^3.2.0", "@splunk/react-icons@^3.3.0", "@splunk/react-icons@^3.3.1":
   version "3.3.1"
   resolved "https://registry.npmjs.org/@splunk/react-icons/-/react-icons-3.3.1.tgz#091ba1ac5716fe7db99eca8b676a51655001e518"
   integrity sha512-HSDvvBe17u+/9aOG51uhrmATfLaAo/w5gkW2/32Ft2rK3ylRga6oBoa3LmvaYRc0Wo4cS6fAUgYwZD0swffbQQ==
@@ -1701,7 +1701,7 @@
     lodash "^4.17.14"
     prop-types "^15.6.2"
 
-"@splunk/react-icons@^4.0.0", "@splunk/react-icons@^4.0.1":
+"@splunk/react-icons@^4.0.1":
   version "4.0.1"
   resolved "https://registry.npmjs.org/@splunk/react-icons/-/react-icons-4.0.1.tgz#ccf103a7f6717c2ebfd1feea3831e47eeeb9e756"
   integrity sha512-WJ7DgL9AoDQL5mQ28D3KtKjhdFpvKMsvxk2Olg6HVn3nP1ePfDb1QtIOjLIN6+AvKyDKQPrnlFkLy38sw2ErJA==
@@ -1782,33 +1782,6 @@
     lodash "^4.17.19"
     prop-types "^15.6.0"
 
-"@splunk/react-ui@4.17.0":
-  version "4.17.0"
-  resolved "https://registry.npmjs.org/@splunk/react-ui/-/react-ui-4.17.0.tgz#f15d409ea63401897abd83e40280e13d0bde57f4"
-  integrity sha512-pvsvk9wBXJDm5kO5Vgnijp40RgSm7jwmtsEdq+3TdEMpzWpXDx3fv0LJHfij+gRqQ0wjdlH5KVc7DlTmu568xw==
-  dependencies:
-    "@splunk/react-icons" "^4.0.0"
-    "@splunk/themes" "^0.16.0"
-    "@splunk/ui-utils" "^1.6.0"
-    "@types/commonmark" "^0.27.0"
-    "@types/lodash" "^4.14.156"
-    "@types/react" "^16.9.38"
-    "@types/react-dom" "^16.9.8"
-    "@types/react-resize-detector" "^3.1.1"
-    "@types/styled-components" "^5.1.0"
-    "@types/tinycolor2" "^1.4.2"
-    commonmark "^0.27.0"
-    commonmark-react-renderer "^4.3.2"
-    decimal.js-light "^2.2.3"
-    lodash "^4.17.14"
-    moment "^2.29.4"
-    prop-types "^15.6.2"
-    react-resize-detector "^3.2.1"
-    react-sortable-hoc "^1.11.0"
-    react-spring "9.2.4"
-    tinycolor2 "^1.4.1"
-    use-typed-event-listener "^3.0.0"
-
 "@splunk/react-ui@^4.0.0", "@splunk/react-ui@^4.11.0", "@splunk/react-ui@^4.16.3", "@splunk/react-ui@^4.17.0", "@splunk/react-ui@^4.17.1", "@splunk/react-ui@^4.5.3":
   version "4.18.0"
   resolved "https://registry.npmjs.org/@splunk/react-ui/-/react-ui-4.18.0.tgz#82cfd08705204e1f7eb5eb393ea037197cae7573"
@@ -1886,49 +1859,10 @@
     scriptjs "^2.5.8"
     semver "^7.3.8"
 
-"@splunk/themes@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.npmjs.org/@splunk/themes/-/themes-0.12.0.tgz#caa1fc46e3c2fc4e79c02f20060ffd0484b22b80"
-  integrity sha512-LdXKLRHoXIHorHMjSZLoH6txyCQHDFD+zWUx+FroEj4gQOF5eg9EHfbC0Z7nyglcyy8PcngS3GhDlgeaeisHlw==
-  dependencies:
-    "@types/lodash" "^4.14.156"
-    "@types/react" "^16.9.38"
-    "@types/styled-components" "^5.1.0"
-    "@types/tinycolor2" "^1.4.2"
-    color-blend "^2.0.9"
-    lodash "^4.17.14"
-    tinycolor2 "^1.4.1"
-
-"@splunk/themes@^0.15.0":
-  version "0.15.0"
-  resolved "https://registry.npmjs.org/@splunk/themes/-/themes-0.15.0.tgz#fc29f8760359a14bcae4e17bf8c11b00e72c8d63"
-  integrity sha512-H7SVhgXU+1rJUfC/Ijt12AUIo7hX+tzvknAs9MiCppdAUbUBbKtm+TN4z4YKYiHzpA/mwlY2A35vXGGP5ljH0A==
-  dependencies:
-    "@types/lodash" "^4.14.156"
-    "@types/react" "^16.9.38"
-    "@types/styled-components" "^5.1.0"
-    "@types/tinycolor2" "^1.4.2"
-    color-blend "^2.0.9"
-    lodash "^4.17.14"
-    tinycolor2 "^1.4.1"
-
-"@splunk/themes@^0.16.0", "@splunk/themes@^0.16.1":
+"@splunk/themes@^0.12.0", "@splunk/themes@^0.15.0", "@splunk/themes@^0.16.0", "@splunk/themes@^0.16.1", "@splunk/themes@^0.7.0":
   version "0.16.1"
   resolved "https://registry.npmjs.org/@splunk/themes/-/themes-0.16.1.tgz#36b787b9297525d4079dafff86c21ebd6766898d"
   integrity sha512-hBcdodLP/IyGFJiVm6PkVw2Qq5x6otLY83F4ZOLSGOKbkPauI18RULJ9nks6l6yU3vFYun0oT68Xor6ufPt7SQ==
-  dependencies:
-    "@types/lodash" "^4.14.156"
-    "@types/react" "^16.9.38"
-    "@types/styled-components" "^5.1.0"
-    "@types/tinycolor2" "^1.4.2"
-    color-blend "^2.0.9"
-    lodash "^4.17.14"
-    tinycolor2 "^1.4.1"
-
-"@splunk/themes@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@splunk/themes/-/themes-0.7.0.tgz#2f67ec564bb955a2d004ae442bcd76015a0eb678"
-  integrity sha512-klgyIxyQkCDaoHdprXXBu59iz4ePtopXcY42ZlzOKIof1IHq+0A5VE86npfX3+hCe43VrJMTkDIRxLFS0gfdyQ==
   dependencies:
     "@types/lodash" "^4.14.156"
     "@types/react" "^16.9.38"
@@ -2123,7 +2057,7 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
-"@types/json-schema@^7.0.5":
+"@types/json-schema@^7.0.5", "@types/json-schema@^7.0.8":
   version "7.0.12"
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.12.tgz#d70faba7039d5fca54c83c7dbab41051d2b6f6cb"
   integrity sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==
@@ -2442,7 +2376,7 @@ ajv-keywords@^3.1.0, ajv-keywords@^3.4.1, ajv-keywords@^3.5.2:
   resolved "https://registry.npmjs.org/ajv-keywords/-/ajv-keywords-3.5.2.tgz#31f29da5ab6e00d1c2d329acf7b5929614d5014d"
   integrity sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==
 
-ajv@^6.1.0, ajv@^6.10.2, ajv@^6.12.4:
+ajv@^6.1.0, ajv@^6.10.2, ajv@^6.12.4, ajv@^6.12.5:
   version "6.12.6"
   resolved "https://registry.npmjs.org/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
@@ -4434,6 +4368,14 @@ file-entry-cache@^6.0.1:
   dependencies:
     flat-cache "^3.0.4"
 
+file-loader@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-6.2.0.tgz#baef7cf8e1840df325e4390b4484879480eebe4d"
+  integrity sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==
+  dependencies:
+    loader-utils "^2.0.0"
+    schema-utils "^3.0.0"
+
 file-uri-to-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
@@ -5681,6 +5623,18 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
+mime-db@1.52.0:
+  version "1.52.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.52.0.tgz#bbabcdc02859f4987301c856e3387ce5ec43bf70"
+  integrity sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==
+
+mime-types@^2.1.27:
+  version "2.1.35"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.35.tgz#381a871b62a734450660ae3deee44813f70d959a"
+  integrity sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==
+  dependencies:
+    mime-db "1.52.0"
+
 mimic-fn@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
@@ -6839,6 +6793,15 @@ schema-utils@^2.6.5:
     ajv "^6.12.4"
     ajv-keywords "^3.5.2"
 
+schema-utils@^3.0.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-3.3.0.tgz#f50a88877c3c01652a15b622ae9e9795df7a60fe"
+  integrity sha512-pN/yOAvcC+5rQ5nERGuwrjLlYvLTbCibnZ1I7B1LaiAz9BRBlE9GMgE/eqV30P7aJQUf7Ddimy/RsbYO/GrVGg==
+  dependencies:
+    "@types/json-schema" "^7.0.8"
+    ajv "^6.12.5"
+    ajv-keywords "^3.5.2"
+
 scriptjs@^2.5.8:
   version "2.5.9"
   resolved "https://registry.npmjs.org/scriptjs/-/scriptjs-2.5.9.tgz#343915cd2ec2ed9bfdde2b9875cd28f59394b35f"
@@ -7536,6 +7499,15 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha512-Am1ousAhSLBeB9cG/7k7r2R0zj50uDRlZHPGbazid5s9rlF1F/QKYObEKSIunSjIOkJZqwRRLpvewjEkM7pSqg==
+
+url-loader@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-4.1.1.tgz#28505e905cae158cf07c92ca622d7f237e70a4e2"
+  integrity sha512-3BTV812+AVHHOJQO8O5MkWgZ5aosP7GnROJwvzLS9hWDj00lZ6Z0wNak423Lp9PBZN05N+Jk/N5Si8jRAlGyWA==
+  dependencies:
+    loader-utils "^2.0.0"
+    mime-types "^2.1.27"
+    schema-utils "^3.0.0"
 
 url@^0.11.0:
   version "0.11.1"

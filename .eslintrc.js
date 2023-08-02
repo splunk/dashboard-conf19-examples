@@ -8,6 +8,7 @@ module.exports = {
         'class-methods-use-this': 'off',
         'react/function-component-definition': 'off',
         'react/forbid-prop-types': 'off',
+        'react/require-default-props': 'off',
     },
     env: {
         browser: true,
