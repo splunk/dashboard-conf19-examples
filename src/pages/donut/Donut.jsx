@@ -1,25 +1,32 @@
 /* eslint-env browser */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
+import T from 'prop-types';
 import * as d3 from 'd3';
-import rd3 from 'react-d3-library';
 import styled from 'styled-components';
-import BaseVisualization from '@splunk/dashboard-visualizations/common/BaseVisualization';
 
-const RD3Component = rd3.Component;
+const useD3 = (renderChartFn) => {
+    const ref = React.useRef();
+
+    React.useEffect(() => {
+        renderChartFn(d3.select(ref.current));
+    }, [renderChartFn]);
+
+    return ref;
+};
 
 const Container = styled.div`
-    background: ${props => props.background};
+    background: ${(props) => props.background};
     color: white;
     font-weight: 600;
     font-size: 14px;
-    font-family: Splunk Platform Sans, sans-serif;
-    width: ${props => props.width};
-    height: ${props => props.width};
+    font-family: 'Splunk Platform Sans', sans-serif;
+    width: ${(props) => props.width};
+    height: ${(props) => props.width};
 `;
 
-const processData = dataSources => {
+const processData = (dataSources) => {
     // remember encoding
-    if (!dataSources.primary.data) {
+    if (!dataSources || !dataSources.primary || !dataSources.primary.data) {
         return {
             label: [],
             value: [],
@@ -32,7 +39,7 @@ const processData = dataSources => {
         };
     }
     // todo: should use Base Parser. (need fix one issue in parser)
-    const fieldNames = dataSources.primary.data.fields.map(f => f.name);
+    const fieldNames = dataSources.primary.data.fields.map((f) => f.name);
     const donutData = {
         label: dataSources.primary.data.columns[0],
         value: dataSources.primary.data.columns[1],
@@ -47,111 +54,132 @@ const processData = dataSources => {
     return donutData;
 };
 
-// d3 code example is from https://bl.ocks.org/mbostock/1346395
-const drawChart = ({ data = null, width, height: initialHeight, options }) => {
-    const node = document.createElement('div');
-    const { value } = data;
-    const height = initialHeight - 25;
-    const radius = Math.min(width, height) / 2.5;
+const Donut = ({ dataSources, width, height, options }) => {
+    const d3Data = useMemo(() => processData(dataSources), [dataSources]);
 
-    const colorScheme = options.colorScheme || 'schemeCategory10';
-    const color = d3.scaleOrdinal(d3[colorScheme]);
+    const d3RenderFn = useCallback(
+        (svg) => {
+            const { value } = d3Data;
+            const internalHeight = height - 25;
+            const radius = Math.min(width, internalHeight) / 2.5;
 
-    const pie = d3
-        .pie()
-        .value(d => d)
-        .sort(null);
-    const arc = d3
-        .arc()
-        .innerRadius(radius - 50)
-        .outerRadius(radius - 10);
+            const colorScheme = options.colorScheme || 'schemeCategory10';
+            const color = d3.scaleOrdinal(d3[colorScheme]);
 
-    const svg = d3
-        .select(node)
-        .append('svg')
-        .attr('width', width)
-        .attr('height', height)
-        .append('g')
-        .attr('transform', `translate(${width / 2.5},${height / 2})`);
+            const pie = d3
+                .pie()
+                .value((d) => d)
+                .sort(null);
+            const arc = d3
+                .arc()
+                .innerRadius(radius - 50)
+                .outerRadius(radius - 10);
 
-    // join data
-    let arcs = svg.selectAll('.arc').data(pie(value));
+            svg.append('g').attr('transform', `translate(${width / 2.5},${height / 2})`);
 
-    // remove unneeded arcs
-    arcs.exit().remove();
+            // join data
+            let arcs = svg.selectAll('.arc').data(pie(value));
 
-    // enter arc
-    arcs = arcs
-        .enter()
-        .append('g')
-        .attr('class', 'arc');
+            // remove unneeded arcs
+            arcs.exit().remove();
 
-    arcs.append('path')
-        .attr('fill', (d, i) => color(i))
-        .attr('d', arc);
+            // enter arc
+            arcs = arcs.enter().append('g').attr('class', 'arc');
 
-    // note: for demo purpose
-    // arcs.append('text')
-    //     .attr('transform', d => {
-    //         const [x, y] = arc.centroid(d);
-    //         return `translate(${x - 8},${y})`;
-    //     })
-    //     .style('font-size', 8)
-    //     .text(d => d.value);
+            arcs.append('path')
+                .attr('fill', (d, i) => color(i))
+                .attr('d', arc);
 
-    // const { label } = data;
-    // const legend = svg
-    //     .selectAll('.legend')
-    //     .data(label)
-    //     .enter()
-    //     .append('g')
-    //     .attr('class', 'legend');
+            // note: for demo purpose
+            // arcs.append('text')
+            //     .attr('transform', (d) => {
+            //         const [x, y] = arc.centroid(d);
+            //         return `translate(${x - 8},${y})`;
+            //     })
+            //     .style('font-size', 8)
+            //     .text((d) => d.value);
 
-    // legend
-    //     .append('rect')
-    //     .attr('width', 10)
-    //     .attr('height', 8)
-    //     .attr('x', radius)
-    //     .attr('y', (d, i) => i * 10)
-    //     .attr('fill', (d, i) => color(i));
+            // const { label } = d3Data;
+            // const legend = svg.selectAll('.legend').data(label).enter().append('g').attr('class', 'legend');
 
-    // legend
-    //     .append('text')
-    //     .attr('fill', 'white')
-    //     .style('font-size', 10)
-    //     .attr('x', radius + 12)
-    //     .attr('y', (d, i) => i * 10)
-    //     .attr('dy', '0.8em')
-    //     .text(d => d);
+            // legend
+            //     .append('rect')
+            //     .attr('width', 10)
+            //     .attr('height', 8)
+            //     .attr('x', radius)
+            //     .attr('y', (d, i) => i * 10)
+            //     .attr('fill', (d, i) => color(i));
 
-    return node;
-};
+            // legend
+            //     .append('text')
+            //     .attr('fill', 'white')
+            //     .style('font-size', 10)
+            //     .attr('x', radius + 12)
+            //     .attr('y', (d, i) => i * 10)
+            //     .attr('dy', '0.8em')
+            //     .text((d) => d);
+        },
+        [d3Data, width, height, options]
+    );
 
-const Donut = ({ dataSources, width, height, background = 'transparent', title, description, options }) => {
-    const [d3Data, setD3Data] = useState('');
-
-    useEffect(() => {
-        const data = processData(dataSources);
-        setD3Data(drawChart({ data, width, height, options }));
-    }, [dataSources]);
+    const ref = useD3(d3RenderFn);
 
     return (
-        <Container width={width} height={height} background={background}>
-            <div id="title">{title}</div>
-            <div id="description">{description}</div>
-            <RD3Component data={d3Data} />
+        <Container width={width} height={height} background={options.backgroundColor}>
+            <svg width={width} height={height} ref={ref} />
         </Container>
     );
 };
 
 Donut.propTypes = {
-    ...BaseVisualization.propTypes,
+    /**
+     * width in pixel or string, defaults to 100%
+     */
+    width: T.oneOfType([T.string, T.number]),
+    /**
+     * height in pixel or string
+     */
+    height: T.oneOfType([T.string, T.number]),
+    /**
+     * visualization formatting options
+     */
+    options: T.object,
+    /**
+     * datasource state which include data and request params, object key indicate the datasource type.
+     */
+    dataSources: T.objectOf(
+        T.shape({
+            /**
+             * current request params
+             */
+            requestParams: T.object,
+            /**
+             * current dataset
+             */
+            data: T.shape({
+                fields: T.array,
+                columns: T.array,
+            }),
+            /**
+             * error
+             */
+            error: T.shape({
+                level: T.string,
+                message: T.string,
+            }),
+            /**
+             * meta data that came with the dataset
+             */
+            meta: T.object,
+        })
+    ),
 };
 
 Donut.defaultProps = {
-    ...BaseVisualization.defaultProps,
+    options: {},
     height: 250,
     width: 600,
+    dataSources: {},
 };
 
 export default Donut;

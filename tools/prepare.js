@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
+const path = require('path');
 const fs = require('fs-extra');
 const template = require('lodash.template');
-const path = require('path');
 const appConfig = require('../appConfig');
 
 const buildPath = path.join(__dirname, '..', 'build', appConfig.id);
@@ -15,9 +16,9 @@ const resourceMeta = {
  * walk a dir and return all files
  * @param {*} dir
  */
-const walkDir = dir => {
+const walkDir = (dir) => {
     let files = [];
-    fs.readdirSync(dir).forEach(f => {
+    fs.readdirSync(dir).forEach((f) => {
         const dirPath = path.join(dir, f);
         const isDirectory = fs.statSync(dirPath).isDirectory();
         if (isDirectory) {
@@ -36,7 +37,7 @@ const walkDir = dir => {
  */
 const copyAndReplace = (source, dist) => {
     const files = walkDir(source);
-    files.forEach(f => {
+    files.forEach((f) => {
         let content = fs.readFileSync(f);
         if (path.extname(f) === '.xml') {
             const compiled = template(content);

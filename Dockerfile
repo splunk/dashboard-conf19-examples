@@ -1,11 +1,8 @@
-FROM node:10.17-alpine
+FROM node:16.20-alpine
 
 # Install git and other tools
-RUN apk add --update ca-certificates git python2 py-pip make \
+RUN apk add --update ca-certificates git make \
      && rm -rf /var/cache/apk/*
-
-# Packaging Toolkit
-RUN pip install --no-cache http://download.splunk.com/misc/packaging-toolkit/splunk-packaging-toolkit-1.0.0.tar.gz
 
 RUN mkdir src/
 WORKDIR /src

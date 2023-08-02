@@ -1,3 +1,3 @@
 module.exports = {
-    id: 'dashboard_conf19_examples',
+    id: 'dashboard_framework_examples',
 };

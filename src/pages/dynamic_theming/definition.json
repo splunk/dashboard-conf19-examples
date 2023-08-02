@@ -43,36 +43,36 @@
     "visualizations": {
         "sv_total_event": {
             "title": "_internal event count",
-            "type": "viz.singlevalue",
+            "type": "splunk.singlevalue",
             "options": { "backgroundColor": "#53a051" },
             "dataSources": { "primary": "total_count_search" }
         },
         "sv_error": {
             "title": "error count",
-            "type": "viz.singlevalue",
+            "type": "splunk.singlevalue",
             "options": { "backgroundColor": "#dc4e41" },
             "dataSources": { "primary": "error_count_search" }
         },
         "sv_warning": {
             "title": "warning count",
-            "type": "viz.singlevalue",
+            "type": "splunk.singlevalue",
             "options": { "backgroundColor": "#f8be34" },
             "dataSources": { "primary": "warning_count_search" }
         },
         "sv_info": {
             "title": "info count",
-            "type": "viz.singlevalue",
+            "type": "splunk.singlevalue",
             "options": { "backgroundColor": "#294e70" },
             "dataSources": { "primary": "info_count_search" }
         },
         "sv_event_by_component": {
             "title": "_internal event count by component",
-            "type": "viz.pie",
+            "type": "splunk.pie",
             "dataSources": { "primary": "event_by_component_search" }
         },
         "event_over_time": {
             "title": "_internal event count over time",
-            "type": "viz.area",
+            "type": "splunk.area",
             "dataSources": { "primary": "timechart_search" }
         }
     }

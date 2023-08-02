@@ -4,7 +4,7 @@ import { url } from './utils';
 
 class PostDataSource extends DataSource {
     request() {
-        return async subscriber => {
+        return async (subscriber) => {
             const response = await fetch(url);
 
             if (!response.ok) {

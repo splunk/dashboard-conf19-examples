@@ -28,7 +28,7 @@
             {
                 "item": "viz_aeTdCp9A",
                 "type": "block",
-                "position": { "h": 400, "w": 740, "x": 430, "y": 30 }
+                "position": { "h": 200, "w": 400, "x": 430, "y": 30 }
             },
             { "item": "viz_EvMPCkP5", "type": "block", "position": { "h": 340, "w": 370, "x": 50, "y": 30 } }
         ]
@@ -37,8 +37,8 @@
     "description": "",
     "visualizations": {
         "viz_EvMPCkP5": {
-            "type": "viz.text",
-            "options": { "content": "Chart.JS Radar", "fontSize": 40, "backgroundColor": "transparent" }
+            "type": "splunk.markdown",
+            "options": { "markdown": "Chart.JS Radar", "customFontSize": 40, "fontSize": "custom", "backgroundColor": "transparent" }
         },
         "viz_aeTdCp9A": {
             "type": "viz.radar",
