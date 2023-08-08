@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view template="<%= applicationId %>:/templates/dashboard.html" type="html">
+    <label>Buttercup Spaceport</label>
+</view>

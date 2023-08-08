@@ -45,7 +45,7 @@
     "visualizations": {
         "sv_total_event": {
             "title": "index=_internal event count of last 15 minutes",
-            "type": "viz.singlevalue",
+            "type": "splunk.singlevalue",
             "options": {
                 "backgroundColor": "#ffffff"
             },
@@ -54,7 +54,7 @@
             }
         },
         "mytable": {
-            "type": "viz.table",
+            "type": "splunk.table",
             "dataSources": {
                 "primary": "mypost"
             }

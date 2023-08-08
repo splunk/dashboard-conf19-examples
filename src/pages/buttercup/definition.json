@@ -5,15 +5,58 @@
             "options": {
                 "data": {
                     "fields": [
-                        { "name": "Eating" },
-                        { "name": "Drinking" },
-                        { "name": "Sleeping" },
-                        { "name": "Designing" },
-                        { "name": "Coding" },
-                        { "name": "Cycling" },
-                        { "name": "Running" }
+                        {
+                            "name": "Eating"
+                        },
+                        {
+                            "name": "Drinking"
+                        },
+                        {
+                            "name": "Sleeping"
+                        },
+                        {
+                            "name": "Designing"
+                        },
+                        {
+                            "name": "Coding"
+                        },
+                        {
+                            "name": "Cycling"
+                        },
+                        {
+                            "name": "Running"
+                        }
                     ],
-                    "columns": [[65, 28], [59, 48], [90, 40], [81, 19], [56, 96], [55, 27], [40, 100]]
+                    "columns": [
+                        [
+                            65,
+                            28
+                        ],
+                        [
+                            59,
+                            48
+                        ],
+                        [
+                            90,
+                            40
+                        ],
+                        [
+                            81,
+                            19
+                        ],
+                        [
+                            56,
+                            96
+                        ],
+                        [
+                            55,
+                            27
+                        ],
+                        [
+                            40,
+                            100
+                        ]
+                    ]
                 }
             }
         },
@@ -21,7 +64,14 @@
             "type": "ds.test",
             "options": {
                 "data": {
-                    "fields": [{ "name": "game_events" }, { "name": "time" }],
+                    "fields": [
+                        {
+                            "name": "game_events"
+                        },
+                        {
+                            "name": "time"
+                        }
+                    ],
                     "columns": [
                         [
                             900,
@@ -135,10 +185,33 @@
             "type": "ds.test",
             "options": {
                 "data": {
-                    "fields": [{ "name": "device" }, { "name": "games" }],
+                    "fields": [
+                        {
+                            "name": "device"
+                        },
+                        {
+                            "name": "games"
+                        }
+                    ],
                     "columns": [
-                        ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-                        [761, 423, 314, 299, 312, 434, 671]
+                        [
+                            "Sun",
+                            "Mon",
+                            "Tue",
+                            "Wed",
+                            "Thu",
+                            "Fri",
+                            "Sat"
+                        ],
+                        [
+                            761,
+                            423,
+                            314,
+                            299,
+                            312,
+                            434,
+                            671
+                        ]
                     ]
                 }
             }
@@ -148,10 +221,18 @@
             "options": {
                 "data": {
                     "fields": [
-                        { "name": "User" },
-                        { "name": "Top Score" },
-                        { "name": "Total Games" },
-                        { "name": "Total Play Time" }
+                        {
+                            "name": "User"
+                        },
+                        {
+                            "name": "Top Score"
+                        },
+                        {
+                            "name": "Total Games"
+                        },
+                        {
+                            "name": "Total Play Time"
+                        }
                     ],
                     "columns": [
                         [
@@ -166,8 +247,30 @@
                             "User 9",
                             "User 10"
                         ],
-                        [63, 59, 47, 42, 23, 16, 15, 8, 4, 1],
-                        [761, 671, 333, 150, 10, 6, 5, 1, 1, 1],
+                        [
+                            63,
+                            59,
+                            47,
+                            42,
+                            23,
+                            16,
+                            15,
+                            8,
+                            4,
+                            1
+                        ],
+                        [
+                            761,
+                            671,
+                            333,
+                            150,
+                            10,
+                            6,
+                            5,
+                            1,
+                            1,
+                            1
+                        ],
                         [
                             "5 hrs",
                             "3 hrs",
@@ -188,8 +291,30 @@
             "type": "ds.test",
             "options": {
                 "data": {
-                    "fields": [{ "name": "games_range" }, { "name": "users" }],
-                    "columns": [["1", "2", "3 - 5", " 6 - 10", "11+"], [1234, 2678, 5246, 4157, 2234]]
+                    "fields": [
+                        {
+                            "name": "games_range"
+                        },
+                        {
+                            "name": "users"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "1",
+                            "2",
+                            "3 - 5",
+                            " 6 - 10",
+                            "11+"
+                        ],
+                        [
+                            1234,
+                            2678,
+                            5246,
+                            4157,
+                            2234
+                        ]
+                    ]
                 }
             }
         },
@@ -197,7 +322,11 @@
             "type": "ds.test",
             "options": {
                 "data": {
-                    "fields": [{ "name": "count" }],
+                    "fields": [
+                        {
+                            "name": "count"
+                        }
+                    ],
                     "columns": [
                         [
                             13,
@@ -259,56 +388,197 @@
             "type": "ds.test",
             "options": {
                 "data": {
-                    "fields": [{ "name": "device" }, { "name": "games" }],
+                    "fields": [
+                        {
+                            "name": "device"
+                        },
+                        {
+                            "name": "games"
+                        }
+                    ],
                     "columns": [
-                        ["Android", "Mac", "iPhone", "iPad", "Windows", "Other"],
-                        [12345, 11123, 10345, 10200, 9987, 5432]
+                        [
+                            "Android",
+                            "Mac",
+                            "iPhone",
+                            "iPad",
+                            "Windows",
+                            "Other"
+                        ],
+                        [
+                            12345,
+                            11123,
+                            10345,
+                            10200,
+                            9987,
+                            5432
+                        ]
                     ]
                 }
             }
         },
         "multi_game_users": {
             "type": "ds.test",
-            "options": { "data": { "fields": [{ "name": "count" }], "columns": [[1000, 554, 671]] } }
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "count"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            1000,
+                            554,
+                            671
+                        ]
+                    ]
+                }
+            }
         },
         "top_score_search": {
             "type": "ds.test",
-            "options": { "data": { "fields": [{ "name": "max" }], "columns": [["63"]] } }
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "max"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "63"
+                        ]
+                    ]
+                }
+            }
         },
         "single_game_users": {
             "type": "ds.test",
-            "options": { "data": { "fields": [{ "name": "count" }], "columns": [[164]] } }
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "count"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            164
+                        ]
+                    ]
+                }
+            }
         },
         "total_game_search": {
             "type": "ds.test",
-            "options": { "data": { "fields": [{ "name": "count" }], "columns": [["13832145"]] } }
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "count"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "13832145"
+                        ]
+                    ]
+                }
+            }
         },
         "total_user_search": {
             "type": "ds.test",
-            "options": { "data": { "fields": [{ "name": "count" }], "columns": [["71896"]] } }
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "count"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "71896"
+                        ]
+                    ]
+                }
+            }
         },
         "yoy_player_growth": {
             "type": "ds.test",
-            "options": { "data": { "fields": [{ "name": "hardcoded_data" }], "columns": [["57%"]] } }
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "hardcoded_data"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "57%"
+                        ]
+                    ]
+                }
+            }
         },
         "score_distribution": {
             "type": "ds.test",
             "options": {
                 "data": {
-                    "fields": [{ "name": "score" }, { "name": "games" }],
-                    "columns": [["< 5", "5 - 19", "20 - 39", "40+"], [1234, 2678, 1910, 978]]
+                    "fields": [
+                        {
+                            "name": "score"
+                        },
+                        {
+                            "name": "games"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "< 5",
+                            "5 - 19",
+                            "20 - 39",
+                            "40+"
+                        ],
+                        [
+                            1234,
+                            2678,
+                            1910,
+                            978
+                        ]
+                    ]
                 }
             }
         },
         "yoy_engagement_growth": {
             "type": "ds.test",
-            "options": { "data": { "fields": [{ "name": "hardcoded_data" }], "columns": [["42%"]] } }
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "hardcoded_data"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "42%"
+                        ]
+                    ]
+                }
+            }
         },
         "avg_games_per_user_search": {
             "type": "ds.test",
             "options": {
                 "data": {
-                    "fields": [{ "name": "count" }, { "name": "avg_games_played" }],
+                    "fields": [
+                        {
+                            "name": "count"
+                        },
+                        {
+                            "name": "avg_games_played"
+                        }
+                    ],
                     "columns": [
                         [
                             9,
@@ -362,7 +632,9 @@
                             12,
                             9
                         ],
-                        [7.92]
+                        [
+                            7.92
+                        ]
                     ]
                 }
             }
@@ -385,143 +657,383 @@
             "layoutItemBackgroundColor": "transparent"
         },
         "structure": [
-            { "item": "yoy_engagement_growth", "position": { "h": 70, "w": 80, "x": 113, "y": 113 } },
-            { "item": "yoy_player_growth", "position": { "h": 70, "w": 80, "x": 113, "y": 433 } },
-            { "item": "top_score", "position": { "h": 50, "w": 200, "x": 380, "y": 330 } },
-            { "item": "total_users", "position": { "h": 60, "w": 220, "x": 370, "y": 240 } },
-            { "item": "leader_board", "position": { "h": 140, "w": 390, "x": 1110, "y": 160 } },
-            { "item": "punch_card", "position": { "h": 145, "w": 400, "x": 1105, "y": 325 } },
-            { "item": "total_games", "position": { "h": 100, "w": 360, "x": 670, "y": 190 } },
-            { "item": "avg_games_per_user_search", "position": { "h": 110, "w": 350, "x": 680, "y": 327 } },
-            { "item": "last_hour_games", "position": { "h": 140, "w": 350, "x": 680, "y": 460 } },
-            { "item": "score_distribution", "position": { "h": 160, "w": 230, "x": 370, "y": 400 } },
-            { "item": "games_per_user", "position": { "h": 170, "w": 220, "x": 370, "y": 40 } },
-            { "item": "games_per_day", "position": { "h": 90, "w": 390, "x": 1110, "y": 480 } },
-            { "item": "games_per_device", "position": { "h": 90, "w": 400, "x": 1100, "y": 40 } },
-            { "item": "single_game_users", "position": { "h": 100, "w": 120, "x": 710, "y": 10 } },
-            { "item": "multi_game_users", "position": { "h": 100, "w": 110, "x": 870, "y": 10 } }
+            {
+                "item": "yoy_engagement_growth",
+                "position": {
+                    "h": 70,
+                    "w": 80,
+                    "x": 113,
+                    "y": 113
+                }
+            },
+            {
+                "item": "yoy_player_growth",
+                "position": {
+                    "h": 70,
+                    "w": 80,
+                    "x": 113,
+                    "y": 433
+                }
+            },
+            {
+                "item": "top_score",
+                "position": {
+                    "h": 50,
+                    "w": 200,
+                    "x": 380,
+                    "y": 330
+                }
+            },
+            {
+                "item": "total_users",
+                "position": {
+                    "h": 60,
+                    "w": 220,
+                    "x": 370,
+                    "y": 240
+                }
+            },
+            {
+                "item": "leader_board",
+                "position": {
+                    "h": 140,
+                    "w": 390,
+                    "x": 1110,
+                    "y": 160
+                }
+            },
+            {
+                "item": "punch_card",
+                "position": {
+                    "h": 145,
+                    "w": 400,
+                    "x": 1105,
+                    "y": 325
+                }
+            },
+            {
+                "item": "total_games",
+                "position": {
+                    "h": 100,
+                    "w": 360,
+                    "x": 670,
+                    "y": 190
+                }
+            },
+            {
+                "item": "avg_games_per_user_search",
+                "position": {
+                    "h": 110,
+                    "w": 350,
+                    "x": 680,
+                    "y": 327
+                }
+            },
+            {
+                "item": "last_hour_games",
+                "position": {
+                    "h": 140,
+                    "w": 350,
+                    "x": 680,
+                    "y": 460
+                }
+            },
+            {
+                "item": "score_distribution",
+                "position": {
+                    "h": 160,
+                    "w": 230,
+                    "x": 370,
+                    "y": 400
+                }
+            },
+            {
+                "item": "games_per_user",
+                "position": {
+                    "h": 170,
+                    "w": 220,
+                    "x": 370,
+                    "y": 40
+                }
+            },
+            {
+                "item": "games_per_day",
+                "position": {
+                    "h": 90,
+                    "w": 390,
+                    "x": 1110,
+                    "y": 480
+                }
+            },
+            {
+                "item": "games_per_device",
+                "position": {
+                    "h": 90,
+                    "w": 400,
+                    "x": 1100,
+                    "y": 40
+                }
+            },
+            {
+                "item": "single_game_users",
+                "position": {
+                    "h": 100,
+                    "w": 120,
+                    "x": 710,
+                    "y": 10
+                }
+            },
+            {
+                "item": "multi_game_users",
+                "position": {
+                    "h": 100,
+                    "w": 110,
+                    "x": 870,
+                    "y": 10
+                }
+            }
         ]
     },
-    "title": "Petey's Buttercup Games",
+    "title": "Buttercup Games",
     "description": "",
+    "defaults": {},
     "visualizations": {
         "top_score": {
-            "type": "viz.singlevalue",
-            "options": {
-                "useColors": true,
-                "rangeColors": ["#fff", "#fff"],
-                "rangeValues": [0, 10000000000]
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "top_score_search"
             },
-            "dataSources": { "primary": "top_score_search" }
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByTypes(\"number\", \"string\")"
+            }
         },
         "punch_card": {
-            "type": "viz.table",
-            "options": { "backgroundColor": "transparent" },
-            "dataSources": { "primary": "game_stats" }
-        },
-        "total_games": {
-            "type": "viz.singlevalue",
-            "options": { "useColors": true, "rangeColors": ["#fff", "#fff"], "rangeValues": [0, 100000] },
-            "dataSources": { "primary": "total_game_search" }
-        },
-        "total_users": {
-            "type": "viz.singlevalue",
-            "options": { "useColors": true, "rangeColors": ["#fff", "#fff"], "rangeValues": [0, 1000000000] },
-            "dataSources": { "primary": "total_user_search" }
-        },
-        "leader_board": { "type": "viz.table", "dataSources": { "primary": "leader_search" } },
-        "games_per_day": {
-            "type": "viz.line",
-            "options": { "backgroundColor": "transparent", "legend.placement": "none" },
-            "dataSources": { "primary": "games_per_day" }
-        },
-        "games_per_user": {
-            "type": "viz.column",
-            "options": {
-                "fontColor": "#ffffff",
-                "seriesColors": "['#ffffff']",
-                "backgroundColor": "transparent",
-                "legend.placement": "none",
-                "axisLabelsY.majorUnit": 1,
-                "axisTitleX.visibility": "collapsed",
-                "axisTitleY.visibility": "collapsed"
+            "type": "splunk.table",
+            "dataSources": {
+                "primary": "game_stats"
             },
-            "dataSources": { "primary": "games_per_user" }
-        },
-        "last_hour_games": {
-            "type": "viz.singlevalue",
             "options": {
-                "layout": "radial",
-                "useColors": true,
-                "underLabel": "Compared to 1 hour before",
-                "rangeColors": ["#fff", "#fff"],
-                "rangeValues": [0, 100],
+                "count": 20,
+                "tableFormat": {
+                    "data": "> table | formatByType(formattedConfig)"
+                },
                 "backgroundColor": "transparent"
             },
-            "dataSources": { "primary": "last_hour_games" }
+            "context": {
+                "formattedConfig": {
+                    "number": {
+                        "precision": 0,
+                        "thousandSeparated": false,
+                        "unitPosition": "after"
+                    },
+                    "string": {
+                        "unitPosition": "after"
+                    }
+                }
+            }
+        },
+        "total_games": {
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "total_game_search"
+            },
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByTypes(\"number\", \"string\")"
+            }
+        },
+        "total_users": {
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "total_user_search"
+            },
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByTypes(\"number\", \"string\")"
+            }
+        },
+        "leader_board": {
+            "type": "splunk.table",
+            "dataSources": {
+                "primary": "leader_search"
+            },
+            "options": {
+                "count": 20,
+                "tableFormat": {
+                    "data": "> table | formatByType(formattedConfig)"
+                }
+            },
+            "context": {
+                "formattedConfig": {
+                    "number": {
+                        "precision": 0,
+                        "thousandSeparated": false,
+                        "unitPosition": "after"
+                    },
+                    "string": {
+                        "unitPosition": "after"
+                    }
+                }
+            }
+        },
+        "games_per_day": {
+            "type": "splunk.line",
+            "dataSources": {
+                "primary": "games_per_day"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "backgroundColor": "transparent",
+                "legendDisplay": "off"
+            },
+            "context": {}
+        },
+        "games_per_user": {
+            "type": "splunk.column",
+            "dataSources": {
+                "primary": "games_per_user"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "seriesColors": [
+                    "#ffffff"
+                ],
+                "backgroundColor": "transparent",
+                "legendDisplay": "off",
+                "yAxisMajorTickInterval": 1,
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide"
+            },
+            "context": {}
+        },
+        "last_hour_games": {
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "last_hour_games"
+            },
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByTypes(\"number\", \"string\")",
+                "underLabel": "Compared to 1 hour before",
+                "backgroundColor": "transparent"
+            }
         },
         "games_per_device": {
-            "type": "viz.line",
-            "options": {
-                "fontColor": "#ffffff",
-                "lineWidth": 5,
-                "seriesColors": "['#ffffff']",
-                "backgroundColor": "transparent",
-                "legend.placement": "none",
-                "axisTitleX.visibility": "collapsed",
-                "axisTitleY.visibility": "collapsed"
+            "type": "splunk.line",
+            "dataSources": {
+                "primary": "games_per_device"
             },
-            "dataSources": { "primary": "games_per_device" }
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "lineWidth": 5,
+                "seriesColors": [
+                    "#ffffff"
+                ],
+                "backgroundColor": "transparent",
+                "legendDisplay": "off",
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide"
+            },
+            "context": {}
         },
         "multi_game_users": {
-            "type": "viz.singlevalueradial",
-            "options": {},
-            "dataSources": { "primary": "multi_game_users" }
+            "type": "splunk.singlevalueradial",
+            "dataSources": {
+                "primary": "multi_game_users"
+            },
+            "context": {},
+            "options": {
+                "majorValue": "> primary | seriesByIndex(0) | lastPoint()",
+                "trendValue": "> primary | seriesByIndex(0) | delta(-2)"
+            }
         },
         "single_game_users": {
-            "type": "viz.singlevalueradial",
-            "options": { "trendDisplayMode": "absolute" },
-            "dataSources": { "primary": "single_game_users" }
+            "type": "splunk.singlevalueradial",
+            "dataSources": {
+                "primary": "single_game_users"
+            },
+            "context": {},
+            "options": {
+                "majorValue": "> primary | seriesByIndex(0) | lastPoint()",
+                "trendValue": "> primary | seriesByIndex(0) | delta(-2)",
+                "trendDisplay": "absolute"
+            }
         },
         "yoy_player_growth": {
-            "type": "viz.singlevalue",
-            "options": { "backgroundColor": "transparent" },
-            "encoding": {
-                "trend": "primary[0]"
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "yoy_player_growth"
             },
-            "dataSources": { "primary": "yoy_player_growth" }
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByIndex(0)",
+                "backgroundColor": "transparent"
+            }
         },
         "score_distribution": {
-            "type": "viz.column",
-            "options": {
-                "fontColor": "#ffffff",
-                "seriesColors": "['#ffffff']",
-                "backgroundColor": "transparent",
-                "legend.placement": "none",
-                "axisTitleX.visibility": "collapsed",
-                "axisTitleY.visibility": "collapsed"
+            "type": "splunk.column",
+            "dataSources": {
+                "primary": "score_distribution"
             },
-            "dataSources": { "primary": "score_distribution" }
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "seriesColors": [
+                    "#ffffff"
+                ],
+                "backgroundColor": "transparent",
+                "legendDisplay": "off",
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide"
+            },
+            "context": {}
         },
         "yoy_engagement_growth": {
-            "type": "viz.singlevalue",
-            "options": { "backgroundColor": "transparent" },
-            "encoding": {
-                "trend": "primary[0]"
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "yoy_engagement_growth"
             },
-            "dataSources": { "primary": "yoy_engagement_growth" }
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByIndex(0)",
+                "backgroundColor": "transparent"
+            }
         },
         "avg_games_per_user_search": {
-            "type": "viz.singlevalue",
-            "options": {
-                "useColors": true,
-                "rangeColors": ["#fff", "#fff"],
-                "rangeValues": [0, 1000000000],
-                "showTrendIndicator": false,
-                "sparklineFillColor": "#ffffff",
-                "sparklineStrokeColor": "#ffffff"
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "avg_games_per_user_search"
             },
-            "dataSources": { "primary": "avg_games_per_user_search" }
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByTypes(\"number\", \"string\")",
+                "sparklineAreaColor": "#ffffff",
+                "sparklineStrokeColor": "#ffffff",
+                "trendDisplay": "off"
+            }
         }
     }
 }

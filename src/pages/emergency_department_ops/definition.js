@@ -1,17 +1,19 @@
 import { createStaticURL } from '@splunk/splunk-utils/url';
 
 const walkInVolumeIc = createStaticURL(
-    'app/dashboard_conf19_examples/emergency_department_ops/WalkIn_ic.svg'
+    'app/dashboard_framework_examples/emergency_department_ops/WalkIn_ic.svg'
 );
-const waitTimeIc = createStaticURL('app/dashboard_conf19_examples/emergency_department_ops/WaitTime_ic.svg');
+const waitTimeIc = createStaticURL(
+    'app/dashboard_framework_examples/emergency_department_ops/WaitTime_ic.svg'
+);
 const triagePerHourIc = createStaticURL(
-    'app/dashboard_conf19_examples/emergency_department_ops/TriagePerHour_ic.svg'
+    'app/dashboard_framework_examples/emergency_department_ops/TriagePerHour_ic.svg'
 );
 const patientNurseRatioIc = createStaticURL(
-    'app/dashboard_conf19_examples/emergency_department_ops/PatientNurseRatio_ic.svg'
+    'app/dashboard_framework_examples/emergency_department_ops/PatientNurseRatio_ic.svg'
 );
 const ambulanceVolumeIc = createStaticURL(
-    'app/dashboard_conf19_examples/emergency_department_ops/Ambulance_ic.svg'
+    'app/dashboard_framework_examples/emergency_department_ops/Ambulance_ic.svg'
 );
 
 export default {
@@ -183,7 +185,10 @@ export default {
                             name: 'bar',
                         },
                     ],
-                    columns: [['37', '42'], ['1', '2']],
+                    columns: [
+                        ['37', '42'],
+                        ['1', '2'],
+                    ],
                 },
                 meta: {},
             },
@@ -280,7 +285,7 @@ export default {
                 item: 'viz_PNGteEXK',
                 type: 'block',
                 position: {
-                    h: 50,
+                    h: 100,
                     w: 310,
                     x: 20,
                     y: 10,
@@ -828,7 +833,7 @@ export default {
     description: '',
     visualizations: {
         viz_2E5FHwXJ: {
-            type: 'viz.singlevalue',
+            type: 'splunk.singlevalue',
             options: {
                 showSparkline: false,
             },
@@ -870,7 +875,7 @@ export default {
             },
         },
         viz_6G5z1kKG: {
-            type: 'viz.img',
+            type: 'splunk.image',
             options: {
                 src: patientNurseRatioIc,
             },
@@ -884,14 +889,14 @@ export default {
             },
         },
         viz_7y3wo1hH: {
-            type: 'viz.ellipse',
+            type: 'splunk.ellipse',
             options: {
                 fill: '#818285',
                 stroke: '#818285',
             },
         },
         viz_AGEjwSMk: {
-            type: 'viz.rectangle',
+            type: 'splunk.rectangle',
             options: {
                 rx: 4,
                 ry: 4,
@@ -900,13 +905,13 @@ export default {
             },
         },
         viz_CVCqOXAg: {
-            type: 'viz.rectangle',
+            type: 'splunk.rectangle',
             options: {
                 stroke: '#31373e',
             },
         },
         viz_E9LQo1Fm: {
-            type: 'viz.img',
+            type: 'splunk.image',
             options: {
                 src: walkInVolumeIc,
             },
@@ -919,7 +924,7 @@ export default {
             },
         },
         viz_GfwIBqvv: {
-            type: 'viz.img',
+            type: 'splunk.image',
             options: {
                 src: ambulanceVolumeIc,
             },
@@ -934,19 +939,21 @@ export default {
             },
         },
         viz_Id60YtOe: {
-            type: 'viz.text',
+            type: 'splunk.markdown',
             options: {
-                color: '#F5F5F5',
-                content: 'Total Patients',
-                fontSize: 16,
+                fontColor: '#F5F5F5',
+                markdown: 'Total Patients',
+                fontSize: 'custom',
+                customFontSize: 16,
             },
         },
         viz_MdZlPMOt: {
-            type: 'viz.text',
+            type: 'splunk.markdown',
             options: {
-                color: '#F5F5F5',
-                content: 'Patient - Nurse Ratio',
-                fontSize: 16,
+                fontColor: '#F5F5F5',
+                markdown: 'Patient - Nurse Ratio',
+                fontSize: 'custom',
+                customFontSize: 16,
             },
         },
         viz_MrN7Cmt1: {
@@ -958,24 +965,25 @@ export default {
             },
         },
         viz_NCBgQQ4t: {
-            type: 'viz.ellipse',
+            type: 'splunk.ellipse',
             options: {
                 fill: '#818285',
                 stroke: '#818285',
             },
         },
         viz_OTKLC0Mm: {
-            type: 'viz.img',
+            type: 'splunk.image',
             options: {
                 src: waitTimeIc,
             },
         },
 
         viz_PNGteEXK: {
-            type: 'viz.text',
+            type: 'splunk.markdown',
             options: {
-                content: 'Emergency Department Care',
-                fontSize: 32,
+                markdown: 'Emergency Department Care',
+                fontSize: 'custom',
+                customFontSize: 32,
             },
         },
         viz_SNJXne0D: {
@@ -986,21 +994,22 @@ export default {
             },
         },
         viz_TG7gLEtB: {
-            type: 'viz.text',
+            type: 'splunk.markdown',
             options: {
-                color: '#F5F5F5',
-                content: '% Resolved',
-                fontSize: 16,
+                fontColor: '#F5F5F5',
+                markdown: '% Resolved',
+                fontSize: 'custom',
+                customFontSize: 16,
             },
         },
         viz_Tn0GsIwP: {
-            type: 'viz.singlevalue',
+            type: 'splunk.singlevalue',
             dataSources: {
                 primary: 'patientToNurseRatio',
             },
         },
         viz_Ts050L2f: {
-            type: 'viz.singlevalue',
+            type: 'splunk.singlevalue',
             options: {
                 unit: 'Min',
             },
@@ -1009,11 +1018,11 @@ export default {
             },
         },
         viz_XvLaPQIJ: {
-            type: 'viz.fillergauge',
+            type: 'splunk.fillergauge',
             title: 'Urgent Care Availability',
             options: {
                 gaugeColor: '#FCB4B0',
-                usePercentageRange: true,
+                labelDisplay: 'percentage',
             },
             dataSources: {
                 primary: 'urgentCarePercentage',
@@ -1035,7 +1044,7 @@ export default {
             },
         },
         viz_cZPZPOHO: {
-            type: 'viz.rectangle',
+            type: 'splunk.rectangle',
             options: {
                 rx: 4,
                 ry: 4,
@@ -1044,17 +1053,17 @@ export default {
             },
         },
         viz_cugXUq6D: {
-            type: 'viz.singlevalue',
+            type: 'splunk.singlevalue',
             dataSources: {
                 primary: 'availableStaff',
             },
         },
         viz_dKkuWxFS: {
-            type: 'viz.fillergauge',
+            type: 'splunk.fillergauge',
             title: 'Emergent Availability',
             options: {
                 gaugeColor: '#E0F898',
-                usePercentageRange: true,
+                labelDisplay: 'percentage',
             },
             dataSources: {
                 primary: 'emergentCarePercentage',
@@ -1069,19 +1078,20 @@ export default {
             },
         },
         viz_e7SQu5tY: {
-            type: 'viz.text',
+            type: 'splunk.markdown',
             options: {
-                color: '#F5F5F5',
-                content: 'Available Staff',
-                fontSize: 16,
+                fontColor: '#F5F5F5',
+                markdown: 'Available Staff',
+                fontSize: 'custom',
+                customFontSize: 16,
             },
         },
         viz_eVBpNW3g: {
-            type: 'viz.fillergauge',
+            type: 'splunk.fillergauge',
             title: 'Non-urgent Availability',
             options: {
                 gaugeColor: '#A4F5A1',
-                usePercentageRange: true,
+                labelDisplay: 'percentage',
             },
             dataSources: {
                 primary: 'nonUrgentCarePercentage',
@@ -1096,18 +1106,19 @@ export default {
             },
         },
         viz_g6q2Xcnl: {
-            type: 'viz.text',
+            type: 'splunk.markdown',
             options: {
-                color: '#F5F5F5',
-                content: '# of Triage per Hour',
-                fontSize: 16,
+                fontColor: '#F5F5F5',
+                markdown: 'Num of Triage per Hour',
+                fontSize: 'custom',
+                customFontSize: 16,
             },
         },
         viz_hlXMNGW1: {
-            type: 'viz.line',
+            type: 'splunk.line',
             title: 'Walk In Volume',
             options: {
-                seriesColors: '[#F6847C]',
+                seriesColors: ['#F6847C'],
                 'axisTitleX.text': 'Time',
                 'axisTitleY.text': 'Number of people',
                 backgroundColor: '#15161b',
@@ -1118,11 +1129,12 @@ export default {
             },
         },
         viz_i6u0LGBu: {
-            type: 'viz.text',
+            type: 'splunk.markdown',
             options: {
-                color: '#F5F5F5',
-                content: 'Wait Time',
-                fontSize: 16,
+                fontColor: '#F5F5F5',
+                markdown: 'Wait Time',
+                fontSize: 'custom',
+                customFontSize: 16,
             },
         },
         viz_l6cmavDS: {
@@ -1140,16 +1152,16 @@ export default {
             },
         },
         viz_mPNnUqx1: {
-            type: 'viz.rectangle',
+            type: 'splunk.rectangle',
             options: {
                 stroke: '#31373e',
             },
         },
         viz_neCu6HIT: {
-            type: 'viz.line',
+            type: 'splunk.line',
             title: 'Ambulance Volume',
             options: {
-                seriesColors: '[#5FBCFF]',
+                seriesColors: ['#5FBCFF'],
                 'axisTitleX.text': 'Time',
                 'axisTitleY.text': 'Number of people',
                 backgroundColor: '#15161b',
@@ -1161,7 +1173,7 @@ export default {
             },
         },
         viz_o4uFd0v9: {
-            type: 'viz.singlevalueradial',
+            type: 'splunk.singlevalueradial',
             options: {
                 trendDisplayMode: 'absolute',
                 radialStrokeColor: '#4EB2D2',
@@ -1172,13 +1184,13 @@ export default {
             },
         },
         viz_sWryRX8P: {
-            type: 'viz.img',
+            type: 'splunk.image',
             options: {
                 src: triagePerHourIc,
             },
         },
         viz_t3x6rnjb: {
-            type: 'viz.table',
+            type: 'splunk.table',
             title: 'Patient by Division',
             options: {
                 headerTextColor: '#F5F5F5',
@@ -1193,7 +1205,7 @@ export default {
             },
         },
         viz_tXpmUeLg: {
-            type: 'viz.rectangle',
+            type: 'splunk.rectangle',
             options: {
                 fill: '#23242B',
                 stroke: '#23242B',
@@ -1208,24 +1220,25 @@ export default {
             },
         },
         viz_w3Y5IXFo: {
-            type: 'viz.rectangle',
+            type: 'splunk.rectangle',
             options: {
                 stroke: '#31373e',
             },
         },
         viz_xM0XG7aV: {
-            type: 'viz.singlevalue',
+            type: 'splunk.singlevalue',
             dataSources: {
                 primary: 'triagePerHour',
             },
         },
         viz_xQu2AfOC: {
-            type: 'viz.text',
+            type: 'splunk.markdown',
             options: {
-                color: '#A8ACB1',
-                content:
+                fontColor: '#A8ACB1',
+                markdown:
                     'Emergency Departments are under increasing pressure due to the high demand for access to Emergency Services. Emergency Departments are often the first contact many patients and their relatives or care givers have with a hospital.\n',
-                fontSize: 12,
+                fontSize: 'custom',
+                customFontSize: 12,
             },
         },
     },

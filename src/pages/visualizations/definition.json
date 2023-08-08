@@ -1,3112 +1,3230 @@
 {
-	"dataSources": {
-		"search1": {
-			"type": "ds.test",
-			"options": {
-				"data": {
-					"fields": [
-						{
-							"name": "foo"
-						},
-						{
-							"name": "bar"
-						}
-					],
-					"columns": [
-						[
-							"92",
-							"80",
-							"80",
-							"4",
-							"4",
-							"10",
-							"100",
-							"95",
-							"100"
-						],
-						[
-							"100",
-							"100",
-							"90",
-							"30",
-							"25",
-							"5",
-							"15",
-							"95",
-							"100"
-						]
-					]
-				},
-				"meta": {}
-			}
-		},
-		"search2": {
-			"type": "ds.test",
-			"options": {
-				"data": {
-					"fields": [
-						{
-							"name": "foo"
-						},
-						{
-							"name": "bar"
-						}
-					],
-					"columns": [
-						[
-							"37",
-							"80",
-							"80",
-							"4",
-							"4",
-							"10",
-							"100",
-							"95",
-							"100"
-						],
-						[
-							"100",
-							"100",
-							"90",
-							"30",
-							"25",
-							"5",
-							"15",
-							"95",
-							"100"
-						]
-					]
-				},
-				"meta": {}
-			}
-		},
-		"search3": {
-			"type": "ds.test",
-			"options": {
-				"data": {
-					"fields": [
-						{
-							"name": "_time"
-						},
-						{
-							"name": "10.1.1.000",
-							"data_source": "sum(date_hour)",
-							"splitby_field": "clientip",
-							"splitby_value": "10.1.1.000"
-						},
-						{
-							"name": "10.1.1.002",
-							"data_source": "sum(date_hour)",
-							"splitby_field": "clientip",
-							"splitby_value": "10.1.1.002"
-						},
-						{
-							"name": "_span"
-						}
-					],
-					"columns": [
-						[
-							"2017-08-20T00:00:00.000-07:00",
-							"2017-08-20T00:30:00.000-07:00",
-							"2017-08-20T01:00:00.000-07:00",
-							"2017-08-20T01:30:00.000-07:00",
-							"2017-08-20T02:00:00.000-07:00",
-							"2017-08-20T02:30:00.000-07:00",
-							"2017-08-20T03:00:00.000-07:00",
-							"2017-08-20T03:30:00.000-07:00",
-							"2017-08-20T04:00:00.000-07:00",
-							"2017-08-20T04:30:00.000-07:00"
-						],
-						[
-							"000",
-							"200",
-							"170",
-							"100",
-							"22",
-							"301",
-							"430",
-							"104",
-							"221",
-							"42"
-						],
-						[
-							"20",
-							"302",
-							"332",
-							"112",
-							"460",
-							"154",
-							"121",
-							"36",
-							"576",
-							"165"
-						],
-						[
-							"1800",
-							"1800",
-							"1800",
-							"1800",
-							"1800",
-							"1800",
-							"1800",
-							"1800",
-							"1800",
-							"1800"
-						]
-					]
-				},
-				"meta": {}
-			}
-		},
-		"ds_9c3ZfeIb": {
-			"name": "dynamic_column",
-			"type": "ds.search",
-			"options": {
-				"query": "index=_internal sourcetype=splunkd* \n| timechart count by sourcetype \n| eval splunkd=splunkd/10",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-60m@m"
-				}
-			}
-		},
-		"ds_B4P9O9oS": {
-			"name": "dynamic_internal_runsum",
-			"type": "ds.search",
-			"options": {
-				"query": "index=_internal\n| reverse \n| streamstats sum(count) as total \n| eval total=total/1000\n| timechart max(total)",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-5m"
-				}
-			}
-		},
-		"ds_DrW11qje": {
-			"name": "dynamic_multiseries",
-			"type": "ds.search",
-			"options": {
-				"query": "index=_internal sourcetype=\"splunk*\"\n| timechart count by sourcetype",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-60m@m"
-				}
-			}
-		},
-		"ds_E92whgma": {
-			"name": "static_5",
-			"type": "ds.search",
-			"options": {
-				"query": "| stats count \n| eval count=5",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-15m"
-				}
-			}
-		},
-		"ds_ILYscNIJ": {
-			"name": "static_2485311",
-			"type": "ds.search",
-			"options": {
-				"query": "| stats count \n| eval count=2485311",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-15m"
-				}
-			}
-		},
-		"ds_J9Pm0DlV": {
-			"name": "internal_bubblechart",
-			"type": "ds.search",
-			"options": {
-				"query": "index = _internal sourcetype=splunkd_access \n| stats count sum(bytes) as \"Total Bytes\" by status, date_hour \n| table date_hour status \"Total Bytes\" count ",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-60m@m"
-				}
-			}
-		},
-		"ds_Pk8qKnEe": {
-			"name": "dynamic_timechart_asus",
-			"type": "ds.search",
-			"options": {
-				"query": "index=_internal \n| timechart count partial=f \n| eval count=count/100",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-4h@m"
-				}
-			}
-		},
-		"ds_Q25orfSz": {
-			"name": "table1",
-			"type": "ds.search",
-			"options": {
-				"query": "index=_internal \n| top sourcetype \n| head 4",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-15m"
-				}
-			}
-		},
-		"ds_RbQhO06f": {
-			"name": "static_10",
-			"type": "ds.search",
-			"options": {
-				"query": "| stats count \n| eval count=10",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-15m"
-				}
-			}
-		},
-		"ds_d4b5kRuS": {
-			"name": "dynamic_timechart1",
-			"type": "ds.search",
-			"options": {
-				"query": "index=* \n| timechart count partial=f",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-15m"
-				}
-			}
-		},
-		"ds_ggAutaVy": {
-			"name": "dynamic_internal1",
-			"type": "ds.search",
-			"options": {
-				"query": "index=_internal \n| timechart count \n| eval count=count/100",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-4h@m"
-				}
-			}
-		},
-		"ds_kSZ8xGFE": {
-			"name": "static_78",
-			"type": "ds.search",
-			"options": {
-				"query": "| stats count\n| eval count=78",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-15m"
-				}
-			}
-		},
-		"ds_ogUYCAgX": {
-			"name": "bar_count_sourcetype",
-			"type": "ds.search",
-			"options": {
-				"query": "index=_internal \n| stats count by sourcetype \n| sort - count \n| head 5\n| eval count3=count/50 \n| eval count2=count/30 \n| eval count=count/10",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-15m"
-				}
-			}
-		},
-		"ds_pWHjUw1L": {
-			"name": "static_operational",
-			"type": "ds.search",
-			"options": {
-				"query": "| stats count \n| eval count=\"Operational\"",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-15m"
-				}
-			}
-		},
-		"ds_viWXZ4Yg": {
-			"name": "static_43",
-			"type": "ds.search",
-			"options": {
-				"query": "| stats count \n| eval count=43",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-15m"
-				}
-			}
-		},
-		"ds_whup9VXc": {
-			"name": "annotation",
-			"type": "ds.search",
-			"options": {
-				"query": "index=_internal \n| tail 1\n| eval annotation_label=\"Anomaly Detected\" | eval annotation_color=\"red\" \n|  table _time annotation_label annotation_color",
-				"queryParameters": {
-					"latest": "now",
-					"earliest": "-3m"
-				}
-			}
-		}
-	},
-	"inputs": {},
-	"layout": {
-		"type": "absolute",
-		"options": {
-			"width": 1980,
+    "dataSources": {
+        "search1": {
+            "type": "ds.test",
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "foo"
+                        },
+                        {
+                            "name": "bar"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "92",
+                            "80",
+                            "80",
+                            "4",
+                            "4",
+                            "10",
+                            "100",
+                            "95",
+                            "100"
+                        ],
+                        [
+                            "100",
+                            "100",
+                            "90",
+                            "30",
+                            "25",
+                            "5",
+                            "15",
+                            "95",
+                            "100"
+                        ]
+                    ]
+                },
+                "meta": {}
+            }
+        },
+        "search2": {
+            "type": "ds.test",
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "foo"
+                        },
+                        {
+                            "name": "bar"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "37",
+                            "80",
+                            "80",
+                            "4",
+                            "4",
+                            "10",
+                            "100",
+                            "95",
+                            "100"
+                        ],
+                        [
+                            "100",
+                            "100",
+                            "90",
+                            "30",
+                            "25",
+                            "5",
+                            "15",
+                            "95",
+                            "100"
+                        ]
+                    ]
+                },
+                "meta": {}
+            }
+        },
+        "search3": {
+            "type": "ds.test",
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "_time"
+                        },
+                        {
+                            "name": "10.1.1.000",
+                            "data_source": "sum(date_hour)",
+                            "splitby_field": "clientip",
+                            "splitby_value": "10.1.1.000"
+                        },
+                        {
+                            "name": "10.1.1.002",
+                            "data_source": "sum(date_hour)",
+                            "splitby_field": "clientip",
+                            "splitby_value": "10.1.1.002"
+                        },
+                        {
+                            "name": "_span"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "2017-08-20T00:00:00.000-07:00",
+                            "2017-08-20T00:30:00.000-07:00",
+                            "2017-08-20T01:00:00.000-07:00",
+                            "2017-08-20T01:30:00.000-07:00",
+                            "2017-08-20T02:00:00.000-07:00",
+                            "2017-08-20T02:30:00.000-07:00",
+                            "2017-08-20T03:00:00.000-07:00",
+                            "2017-08-20T03:30:00.000-07:00",
+                            "2017-08-20T04:00:00.000-07:00",
+                            "2017-08-20T04:30:00.000-07:00"
+                        ],
+                        [
+                            "000",
+                            "200",
+                            "170",
+                            "100",
+                            "22",
+                            "301",
+                            "430",
+                            "104",
+                            "221",
+                            "42"
+                        ],
+                        [
+                            "20",
+                            "302",
+                            "332",
+                            "112",
+                            "460",
+                            "154",
+                            "121",
+                            "36",
+                            "576",
+                            "165"
+                        ],
+                        [
+                            "1800",
+                            "1800",
+                            "1800",
+                            "1800",
+                            "1800",
+                            "1800",
+                            "1800",
+                            "1800",
+                            "1800",
+                            "1800"
+                        ]
+                    ]
+                },
+                "meta": {}
+            }
+        },
+        "ds_9c3ZfeIb": {
+            "name": "dynamic_column",
+            "type": "ds.search",
+            "options": {
+                "query": "index=_internal sourcetype=splunkd* \n| timechart count by sourcetype \n| eval splunkd=splunkd/10",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-60m@m"
+                }
+            }
+        },
+        "ds_B4P9O9oS": {
+            "name": "dynamic_internal_runsum",
+            "type": "ds.search",
+            "options": {
+                "query": "index=_internal\n| reverse \n| streamstats sum(count) as total \n| eval total=total/1000\n| timechart max(total)",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-5m"
+                }
+            }
+        },
+        "ds_DrW11qje": {
+            "name": "dynamic_multiseries",
+            "type": "ds.search",
+            "options": {
+                "query": "index=_internal sourcetype=\"splunk*\"\n| timechart count by sourcetype",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-60m@m"
+                }
+            }
+        },
+        "ds_E92whgma": {
+            "name": "static_5",
+            "type": "ds.search",
+            "options": {
+                "query": "| stats count \n| eval count=5",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-15m"
+                }
+            }
+        },
+        "ds_ILYscNIJ": {
+            "name": "static_2485311",
+            "type": "ds.search",
+            "options": {
+                "query": "| stats count \n| eval count=2485311",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-15m"
+                }
+            }
+        },
+        "ds_J9Pm0DlV": {
+            "name": "internal_bubblechart",
+            "type": "ds.search",
+            "options": {
+                "query": "index = _internal sourcetype=splunkd_access \n| stats count sum(bytes) as \"Total Bytes\" by status, date_hour \n| table date_hour status \"Total Bytes\" count ",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-60m@m"
+                }
+            }
+        },
+        "ds_Pk8qKnEe": {
+            "name": "dynamic_timechart_asus",
+            "type": "ds.search",
+            "options": {
+                "query": "index=_internal \n| timechart count partial=f \n| eval count=count/100",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-4h@m"
+                }
+            }
+        },
+        "ds_Q25orfSz": {
+            "name": "table1",
+            "type": "ds.search",
+            "options": {
+                "query": "index=_internal \n| top sourcetype \n| head 4",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-15m"
+                }
+            }
+        },
+        "ds_RbQhO06f": {
+            "name": "static_10",
+            "type": "ds.search",
+            "options": {
+                "query": "| stats count \n| eval count=10",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-15m"
+                }
+            }
+        },
+        "ds_d4b5kRuS": {
+            "name": "dynamic_timechart1",
+            "type": "ds.search",
+            "options": {
+                "query": "index=* \n| timechart count partial=f",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-15m"
+                }
+            }
+        },
+        "ds_ggAutaVy": {
+            "name": "dynamic_internal1",
+            "type": "ds.search",
+            "options": {
+                "query": "index=_internal \n| timechart count \n| eval count=count/100",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-4h@m"
+                }
+            }
+        },
+        "ds_kSZ8xGFE": {
+            "name": "static_78",
+            "type": "ds.search",
+            "options": {
+                "query": "| stats count\n| eval count=78",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-15m"
+                }
+            }
+        },
+        "ds_ogUYCAgX": {
+            "name": "bar_count_sourcetype",
+            "type": "ds.search",
+            "options": {
+                "query": "index=_internal \n| stats count by sourcetype \n| sort - count \n| head 5\n| eval count3=count/50 \n| eval count2=count/30 \n| eval count=count/10",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-15m"
+                }
+            }
+        },
+        "ds_pWHjUw1L": {
+            "name": "static_operational",
+            "type": "ds.search",
+            "options": {
+                "query": "| stats count \n| eval count=\"Operational\"",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-15m"
+                }
+            }
+        },
+        "ds_viWXZ4Yg": {
+            "name": "static_43",
+            "type": "ds.search",
+            "options": {
+                "query": "| stats count \n| eval count=43",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-15m"
+                }
+            }
+        },
+        "ds_whup9VXc": {
+            "name": "annotation",
+            "type": "ds.search",
+            "options": {
+                "query": "index=_internal \n| tail 1\n| eval annotation_label=\"Anomaly Detected\" | eval annotation_color=\"red\" \n|  table _time annotation_label annotation_color",
+                "queryParameters": {
+                    "latest": "now",
+                    "earliest": "-3m"
+                }
+            }
+        }
+    },
+    "inputs": {},
+    "layout": {
+        "type": "absolute",
+        "options": {
+            "width": 1980,
             "height": 1080,
             "display": "auto-scale",
-			"backgroundImage": {
-				"x": 0,
-				"y": 0,
-				"sizeType": "cover"
-			}
-		},
-		"structure": [
-			{
-				"item": "viz_Y90Pqc4f",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 792,
-						"y": 1005
-					},
-					"from": {
-						"x": 848,
-						"y": 1005
-					}
-				}
-			},
-			{
-				"item": "viz_jpZeKR2J",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 104,
-						"y": 54
-					},
-					"from": {
-						"x": 104,
-						"y": 142
-					}
-				}
-			},
-			{
-				"item": "viz_aPfzFkz8",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 780,
-						"y": 859
-					},
-					"from": {
-						"x": 717,
-						"y": 917
-					}
-				}
-			},
-			{
-				"item": "viz_6s1MmjMj",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1897,
-						"y": 865
-					},
-					"from": {
-						"x": 1795,
-						"y": 865
-					}
-				}
-			},
-			{
-				"item": "viz_Lhj4tC1Z",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1035,
-						"y": 81
-					},
-					"from": {
-						"x": 1163,
-						"y": 81
-					}
-				}
-			},
-			{
-				"item": "viz_s34MNyDu",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 892,
-						"y": 980
-					},
-					"from": {
-						"x": 892,
-						"y": 1045
-					}
-				}
-			},
-			{
-				"item": "viz_1OXpfQyb",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1728,
-						"y": 849
-					},
-					"from": {
-						"x": 1902,
-						"y": 848
-					}
-				}
-			},
-			{
-				"item": "viz_AaqoDLFe",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 650,
-						"y": 211
-					},
-					"from": {
-						"x": 650,
-						"y": 271
-					}
-				}
-			},
-			{
-				"item": "viz_MgGHUnh0",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 757,
-						"y": 46
-					},
-					"from": {
-						"x": 757,
-						"y": 134
-					}
-				}
-			},
-			{
-				"item": "viz_9YaBCZmf",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 888,
-						"y": 45
-					},
-					"from": {
-						"x": 888,
-						"y": 133
-					}
-				}
-			},
-			{
-				"item": "viz_WOObbjin",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1044,
-						"y": 91
-					},
-					"from": {
-						"x": 1155,
-						"y": 91
-					}
-				}
-			},
-			{
-				"item": "viz_ZzO20Pcy",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1056,
-						"y": 99
-					},
-					"from": {
-						"x": 1144,
-						"y": 99
-					}
-				}
-			},
-			{
-				"item": "viz_qOR4DHBm",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1066,
-						"y": 106
-					},
-					"from": {
-						"x": 1135,
-						"y": 106
-					}
-				}
-			},
-			{
-				"item": "viz_SjBpp21B",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1073,
-						"y": 113
-					},
-					"from": {
-						"x": 1123,
-						"y": 113
-					}
-				}
-			},
-			{
-				"item": "viz_LOTX7AQQ",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1082,
-						"y": 117
-					},
-					"from": {
-						"x": 1118,
-						"y": 117
-					}
-				}
-			},
-			{
-				"item": "viz_ma2xZdPy",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1013,
-						"y": 44
-					},
-					"from": {
-						"x": 1013,
-						"y": 132
-					}
-				}
-			},
-			{
-				"item": "viz_1cid4qzH",
-				"type": "block",
-				"position": {
-					"h": 300,
-					"w": 360,
-					"x": 550,
-					"y": 670
-				}
-			},
-			{
-				"item": "viz_yoN8SHiD",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 196,
-						"y": 53
-					},
-					"from": {
-						"x": 196,
-						"y": 141
-					}
-				}
-			},
-			{
-				"item": "viz_IntzQO2j",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 304,
-						"y": 52
-					},
-					"from": {
-						"x": 304,
-						"y": 140
-					}
-				}
-			},
-			{
-				"item": "viz_0q8Lja0f",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 370,
-						"y": 41
-					},
-					"from": {
-						"x": 321,
-						"y": 70
-					}
-				}
-			},
-			{
-				"item": "viz_kM6K3vsd",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 419,
-						"y": 128
-					},
-					"from": {
-						"x": 370,
-						"y": 157
-					}
-				}
-			},
-			{
-				"item": "viz_lU3hEr86",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 322,
-						"y": 71
-					},
-					"from": {
-						"x": 322,
-						"y": 121
-					}
-				}
-			},
-			{
-				"item": "viz_Ux9FxkrU",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 420,
-						"y": 71
-					},
-					"from": {
-						"x": 420,
-						"y": 128
-					}
-				}
-			},
-			{
-				"item": "viz_6jYSo0gz",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1622,
-						"y": 90
-					},
-					"from": {
-						"x": 1811,
-						"y": 90
-					}
-				}
-			},
-			{
-				"item": "viz_pZHHYbCD",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1838,
-						"y": 67
-					},
-					"from": {
-						"x": 1811,
-						"y": 91
-					}
-				}
-			},
-			{
-				"item": "viz_QlWdtTd4",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1622,
-						"y": 90
-					},
-					"from": {
-						"x": 1595,
-						"y": 114
-					}
-				}
-			},
-			{
-				"item": "viz_OmzgQcba",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 19,
-						"y": 176
-					},
-					"from": {
-						"x": 1896,
-						"y": 177
-					}
-				}
-			},
-			{
-				"item": "viz_uh8Yaub1",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 16,
-						"y": 383
-					},
-					"from": {
-						"x": 1893,
-						"y": 384
-					}
-				}
-			},
-			{
-				"item": "viz_nkdiLuaU",
-				"type": "line",
-				"position": {
-					"to": {
-						"item": "viz_xy05CfMZ",
-						"port": "s"
-					},
-					"from": {
-						"item": "viz_initFYeE",
-						"port": "n"
-					}
-				}
-			},
-			{
-				"item": "viz3",
-				"position": {
-					"h": 150,
-					"w": 240,
-					"x": 180,
-					"y": 610
-				}
-			},
-			{
-				"item": "viz_ISnopQtM",
-				"type": "line",
-				"position": {
-					"to": {
-						"item": "viz_dKaX2oLa",
-						"port": "s"
-					},
-					"from": {
-						"item": "viz_nQz3G1HX",
-						"port": "n"
-					}
-				}
-			},
-			{
-				"item": "viz_fDHRZAxX",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 22,
-						"y": 589
-					},
-					"from": {
-						"x": 1899,
-						"y": 590
-					}
-				}
-			},
-			{
-				"item": "viz_GQQ5rUlS",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 720,
-						"y": 859
-					},
-					"from": {
-						"x": 779,
-						"y": 922
-					}
-				}
-			},
-			{
-				"item": "viz_uOzZ8ZS4",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 476,
-						"y": 700
-					},
-					"from": {
-						"x": 475,
-						"y": 916
-					}
-				}
-			},
-			{
-				"item": "viz_gQtUvlRZ",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 651,
-						"y": 300
-					},
-					"from": {
-						"x": 651,
-						"y": 360
-					}
-				}
-			},
-			{
-				"item": "viz_vMHlt8DJ",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 610,
-						"y": 330
-					},
-					"from": {
-						"x": 650,
-						"y": 330
-					}
-				}
-			},
-			{
-				"item": "viz_ohJDgONN",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 610,
-						"y": 240
-					},
-					"from": {
-						"x": 650,
-						"y": 240
-					}
-				}
-			},
-			{
-				"item": "viz_DnJ9R8Wu",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 651,
-						"y": 211
-					},
-					"from": {
-						"x": 651,
-						"y": 271
-					}
-				}
-			},
-			{
-				"item": "viz_vAIRYze0",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 650,
-						"y": 211
-					},
-					"from": {
-						"x": 676,
-						"y": 211
-					}
-				}
-			},
-			{
-				"item": "viz_3c7C4dEb",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 650,
-						"y": 271
-					},
-					"from": {
-						"x": 676,
-						"y": 271
-					}
-				}
-			},
-			{
-				"item": "viz_GFN6Q6dV",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 651,
-						"y": 300
-					},
-					"from": {
-						"x": 677,
-						"y": 300
-					}
-				}
-			},
-			{
-				"item": "viz_rLi1un4H",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 650,
-						"y": 360
-					},
-					"from": {
-						"x": 676,
-						"y": 360
-					}
-				}
-			},
-			{
-				"item": "viz_UlJTWdIk",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 438,
-						"y": 692
-					},
-					"from": {
-						"x": 18,
-						"y": 1067
-					}
-				}
-			},
-			{
-				"item": "viz_2alGed9d",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 18,
-						"y": 697
-					},
-					"from": {
-						"x": 455,
-						"y": 1058
-					}
-				}
-			},
-			{
-				"item": "viz_kY1KwBd3",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 929,
-						"y": 667
-					},
-					"from": {
-						"x": 509,
-						"y": 1042
-					}
-				}
-			},
-			{
-				"item": "viz_kBb3w79h",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 560,
-						"y": 612
-					},
-					"from": {
-						"x": 997,
-						"y": 973
-					}
-				}
-			},
-			{
-				"item": "viz_Lz3Vg686",
-				"type": "block",
-				"position": {
-					"h": 70,
-					"w": 70,
-					"x": 440,
-					"y": 620
-				}
-			},
-			{
-				"item": "viz_RkiJ6NPl",
-				"type": "block",
-				"position": {
-					"h": 100,
-					"w": 100,
-					"x": 900,
-					"y": 50
-				}
-			},
-			{
-				"item": "viz_wIin8gjj",
-				"type": "block",
-				"position": {
-					"h": 100,
-					"w": 290,
-					"x": 1270,
-					"y": 50
-				}
-			},
-			{
-				"item": "viz_6TWN87ZF",
-				"type": "block",
-				"position": {
-					"h": 110,
-					"w": 260,
-					"x": 630,
-					"y": 210
-				}
-			},
-			{
-				"item": "viz_WzvVS2tY",
-				"type": "block",
-				"position": {
-					"h": 50,
-					"w": 50,
-					"x": 450,
-					"y": 630
-				}
-			},
-			{
-				"item": "viz_c9aWOG6b",
-				"type": "block",
-				"position": {
-					"h": 80,
-					"w": 80,
-					"x": 910,
-					"y": 60
-				}
-			},
-			{
-				"item": "viz_1zlMUWTs",
-				"type": "block",
-				"position": {
-					"h": 100,
-					"w": 100,
-					"x": 900,
-					"y": 50
-				}
-			},
-			{
-				"item": "viz_NzpGjM6E",
-				"type": "block",
-				"position": {
-					"h": 80,
-					"w": 80,
-					"x": 20,
-					"y": 60
-				}
-			},
-			{
-				"item": "viz_UY22sByX",
-				"type": "block",
-				"position": {
-					"h": 80,
-					"w": 80,
-					"x": 210,
-					"y": 60
-				}
-			},
-			{
-				"item": "viz_ZZtsVri0",
-				"type": "block",
-				"position": {
-					"h": 80,
-					"w": 80,
-					"x": 110,
-					"y": 60
-				}
-			},
-			{
-				"item": "viz_nyyGoE1C",
-				"type": "block",
-				"position": {
-					"h": 60,
-					"w": 80,
-					"x": 910,
-					"y": 70
-				}
-			},
-			{
-				"item": "viz_UVui4bRR",
-				"type": "block",
-				"position": {
-					"h": 40,
-					"w": 160,
-					"x": 1020,
-					"y": 40
-				}
-			},
-			{
-				"item": "viz_ZSrNodbt",
-				"type": "block",
-				"position": {
-					"h": 60,
-					"w": 110,
-					"x": 770,
-					"y": 70
-				}
-			},
-			{
-				"item": "viz_u8e2FFK3",
-				"type": "block",
-				"position": {
-					"h": 60,
-					"w": 110,
-					"x": 630,
-					"y": 70
-				}
-			},
-			{
-				"item": "viz_msx7aq1i",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 20,
-					"y": 0
-				}
-			},
-			{
-				"item": "viz_HE9FdaLL",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 610,
-					"y": 0
-				}
-			},
-			{
-				"item": "viz_i74VpUH6",
-				"type": "block",
-				"position": {
-					"h": 80,
-					"w": 80,
-					"x": 330,
-					"y": 60
-				}
-			},
-			{
-				"item": "viz_Z9catOju",
-				"type": "block",
-				"position": {
-					"h": 80,
-					"w": 80,
-					"x": 210,
-					"y": 60
-				}
-			},
-			{
-				"item": "viz_MEDrPXnL",
-				"type": "block",
-				"position": {
-					"h": 130,
-					"w": 270,
-					"x": 20,
-					"y": 230
-				}
-			},
-			{
-				"item": "viz_kkIOIFwT",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 20,
-					"y": 180
-				}
-			},
-			{
-				"item": "viz_OWPy12Zk",
-				"type": "block",
-				"position": {
-					"h": 130,
-					"w": 280,
-					"x": 270,
-					"y": 230
-				}
-			},
-			{
-				"item": "viz_ZyGtb4fg",
-				"type": "block",
-				"position": {
-					"h": 110,
-					"w": 250,
-					"x": 1290,
-					"y": 50
-				}
-			},
-			{
-				"item": "viz_43wBZAwe",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 1260,
-					"y": 0
-				}
-			},
-			{
-				"item": "viz_W4NEoMT1",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 1630,
-					"y": 80
-				}
-			},
-			{
-				"item": "viz_ljnFlssJ",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 1650,
-					"y": 40
-				}
-			},
-			{
-				"item": "viz_bq69wjtp",
-				"type": "block",
-				"position": {
-					"h": 70,
-					"w": 70,
-					"x": 440,
-					"y": 60
-				}
-			},
-			{
-				"item": "viz_GP9QlPcA",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 30,
-					"x": 460,
-					"y": 80
-				}
-			},
-			{
-				"item": "viz_1e2fkKRH",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 950,
-					"y": 180
-				}
-			},
-			{
-				"item": "viz_PliL2D4d",
-				"type": "block",
-				"position": {
-					"h": 150,
-					"w": 320,
-					"x": 940,
-					"y": 220
-				}
-			},
-			{
-				"item": "viz_xbS6p0UG",
-				"type": "block",
-				"position": {
-					"h": 150,
-					"w": 320,
-					"x": 1260,
-					"y": 220
-				}
-			},
-			{
-				"item": "viz_59f5CC6N",
-				"type": "block",
-				"position": {
-					"h": 150,
-					"w": 320,
-					"x": 1570,
-					"y": 220
-				}
-			},
-			{
-				"item": "viz_NPnYMg3f",
-				"type": "block",
-				"position": {
-					"h": 130,
-					"w": 420,
-					"x": 20,
-					"y": 440
-				}
-			},
-			{
-				"item": "viz_q6kcwjpg",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 20,
-					"y": 380
-				}
-			},
-			{
-				"item": "viz_M9OhGjq3",
-				"type": "block",
-				"position": {
-					"h": 130,
-					"w": 420,
-					"x": 490,
-					"y": 440
-				}
-			},
-			{
-				"item": "viz_nCJt5pIa",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 1000,
-					"y": 380
-				}
-			},
-			{
-				"item": "viz_UlM0oLRp",
-				"type": "block",
-				"position": {
-					"h": 150,
-					"w": 440,
-					"x": 990,
-					"y": 430
-				}
-			},
-			{
-				"item": "viz_GWwYmz2p",
-				"type": "block",
-				"position": {
-					"h": 200,
-					"w": 430,
-					"x": 1440,
-					"y": 390
-				}
-			},
-			{
-				"item": "viz_xy05CfMZ",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 30,
-					"x": 940,
-					"y": 400
-				}
-			},
-			{
-				"item": "viz_dKaX2oLa",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 30,
-					"x": 900,
-					"y": 200
-				}
-			},
-			{
-				"item": "viz_initFYeE",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 30,
-					"x": 940,
-					"y": 550
-				}
-			},
-			{
-				"item": "viz_nQz3G1HX",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 30,
-					"x": 900,
-					"y": 330
-				}
-			},
-			{
-				"item": "viz_5g7gL2Ax",
-				"type": "block",
-				"position": {
-					"h": 240,
-					"w": 510,
-					"x": 0,
-					"y": 840
-				}
-			},
-			{
-				"item": "viz_Xcz9YKzl",
-				"type": "block",
-				"position": {
-					"h": 190,
-					"w": 400,
-					"x": 940,
-					"y": 660
-				}
-			},
-			{
-				"item": "viz_kyx2ReqJ",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 180,
-					"x": 510,
-					"y": 1020
-				}
-			},
-			{
-				"item": "viz_LoMrUk76",
-				"type": "block",
-				"position": {
-					"h": 20,
-					"w": 100,
-					"x": 740,
-					"y": 1030
-				}
-			},
-			{
-				"item": "viz_cG2921J9",
-				"type": "block",
-				"position": {
-					"h": 20,
-					"w": 100,
-					"x": 610,
-					"y": 1010
-				}
-			},
-			{
-				"item": "viz_JlkmzJHf",
-				"type": "block",
-				"position": {
-					"h": 40,
-					"w": 40,
-					"x": 570,
-					"y": 220
-				}
-			},
-			{
-				"item": "viz_044cdUw0",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 208,
-					"x": 1350,
-					"y": 600
-				}
-			},
-			{
-				"item": "viz_lyyt1zo3",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 160,
-					"x": 20,
-					"y": 600
-				}
-			},
-			{
-				"item": "viz_Z4eO9nq1",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 140,
-					"x": 250,
-					"y": 600
-				}
-			},
-			{
-				"item": "viz_bhxrryzH",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 140,
-					"x": 20,
-					"y": 800
-				}
-			},
-			{
-				"item": "viz_DYdEIWWN",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 30,
-					"x": 460,
-					"y": 640
-				}
-			},
-			{
-				"item": "viz_GznWBXEX",
-				"type": "block",
-				"position": {
-					"h": 50,
-					"w": 50,
-					"x": 450,
-					"y": 940
-				}
-			},
-			{
-				"item": "viz_v6sYjlfK",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 30,
-					"x": 460,
-					"y": 950
-				}
-			},
-			{
-				"item": "viz_NfyxUuzx",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 140,
-					"x": 540,
-					"y": 600
-				}
-			},
-			{
-				"item": "viz_EYhnf8AP",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 140,
-					"x": 950,
-					"y": 600
-				}
-			},
-			{
-				"item": "viz_LXrQK31j",
-				"type": "block",
-				"position": {
-					"h": 30,
-					"w": 340,
-					"x": 1590,
-					"y": 120
-				}
-			},
-			{
-				"item": "viz_W0c7IkZS",
-				"type": "block",
-				"position": {
-					"h": 190,
-					"w": 400,
-					"x": 940,
-					"y": 860
-				}
-			},
-			{
-				"item": "viz_BcGFBytj",
-				"type": "block",
-				"position": {
-					"h": 110,
-					"w": 260,
-					"x": 630,
-					"y": 300
-				}
-			},
-			{
-				"item": "viz_LYTn5U2V",
-				"type": "block",
-				"position": {
-					"h": 40,
-					"w": 40,
-					"x": 570,
-					"y": 310
-				}
-			},
-			{
-				"item": "viz_rbOnZAun",
-				"type": "block",
-				"position": {
-					"h": 20,
-					"w": 20,
-					"x": 580,
-					"y": 230
-				}
-			},
-			{
-				"item": "viz_loeHZAWw",
-				"type": "block",
-				"position": {
-					"h": 20,
-					"w": 20,
-					"x": 580,
-					"y": 320
-				}
-			},
-			{
-				"item": "viz_bggJreg6",
-				"type": "block",
-				"position": {
-					"h": 70,
-					"w": 70,
-					"x": 440,
-					"y": 930
-				}
-			},
-			{
-				"item": "viz_cJZyv8dg",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1670,
-						"y": 732
-					},
-					"from": {
-						"x": 1659,
-						"y": 810
-					}
-				}
-			},
-			{
-				"item": "viz4",
-				"position": {
-					"h": 160,
-					"w": 50,
-					"x": 40,
-					"y": 650
-				}
-			},
-			{
-				"item": "viz_k20TEQyG",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 1663,
-						"y": 726
-					},
-					"from": {
-						"x": 1585,
-						"y": 780
-					}
-				}
-			},
-			{
-				"item": "viz_QdgPeE0H",
-				"position": {
-					"h": 160,
-					"w": 50,
-					"x": 110,
-					"y": 650
-				}
-			},
-			{
-				"item": "viz_AIL2fUFs",
-				"position": {
-					"h": 150,
-					"w": 240,
-					"x": 180,
-					"y": 740
-				}
-			},
-			{
-				"item": "viz_iPIAUmes",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 420,
-						"y": 661
-					},
-					"from": {
-						"x": 196,
-						"y": 662
-					}
-				}
-			},
-			{
-				"item": "viz_s9nGetJX",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 420,
-						"y": 709
-					},
-					"from": {
-						"x": 196,
-						"y": 710
-					}
-				}
-			},
-			{
-				"item": "viz_YQqBCxVu",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 407,
-						"y": 662
-					},
-					"from": {
-						"x": 407,
-						"y": 707
-					}
-				}
-			},
-			{
-				"item": "viz_YX6A4UfX",
-				"type": "line",
-				"position": {
-					"to": {
-						"x": 196,
-						"y": 663
-					},
-					"from": {
-						"x": 196,
-						"y": 708
-					}
-				}
-			},
-			{
-				"item": "viz_VZj4TS5c",
-				"type": "block",
-				"position": {
-					"h": 210,
-					"w": 310,
-					"x": 1360,
-					"y": 660
-				}
-			},
-			{
-				"item": "viz_aY8FG1GI",
-				"type": "block",
-				"position": {
-					"h": 210,
-					"w": 330,
-					"x": 1630,
-					"y": 840
-				}
-			}
-		]
-	},
-	"title": "Visualizations",
-	"description": "",
-	"visualizations": {
-		"viz3": {
-			"type": "viz.fillergauge",
-			"options": {
-				"fontColor": "#cccccc",
-				"chart.style": "minimal",
-				"gaugeColors": "[#333333]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#cccccc",
-				"chart.orientation": "x"
-			},
-			"dataSources": {
-				"primary": "search1"
-			}
-		},
-		"viz4": {
-			"type": "viz.markergauge",
-			"options": {
-				"fontColor": "#cccccc",
-				"chart.style": "minimal",
-				"gaugeColors": "[#333333]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#cccccc"
-			},
-			"dataSources": {
-				"primary": "search1"
-			}
-		},
-		"viz_044cdUw0": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Choropleth Maps",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_0q8Lja0f": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 2,
-				"strokeOpacity": 0.25
-			}
-		},
-		"viz_1OXpfQyb": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_1cid4qzH": {
-			"type": "viz.bubble",
-			"options": {
-				"fontColor": "#cccccc",
-				"seriesColors": "[#333333,#666666,#cccccc,#ffffff]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#cccccc"
-			},
-			"dataSources": {
-				"primary": "ds_J9Pm0DlV"
-			}
-		},
-		"viz_1e2fkKRH": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Area Chart",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_1zlMUWTs": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeOpacity": 0.8
-			}
-		},
-		"viz_2alGed9d": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.1
-			}
-		},
-		"viz_3c7C4dEb": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeWidth": 1,
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_43wBZAwe": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Text Examples",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_59f5CC6N": {
-			"type": "viz.area",
-			"options": {
-				"fontColor": "transparent",
-				"seriesColors": "[0xcccccc,0x666666]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "transparent",
-				"legend.placement": "none",
-				"axisTitleX.visibility": "collapsed",
-				"axisTitleY.visibility": "collapsed"
-			},
-			"encoding": {
-				"x": "primary._time",
-				"y": "primary[1]",
-				"y2": "primary[2]"
-			},
-			"dataSources": {
-				"primary": "search3"
-			}
-		},
-		"viz_5g7gL2Ax": {
-			"type": "viz.pie",
-			"options": {
-				"fontColor": "#ffffff",
-				"seriesColors": "[0x333333,0x666666,0xcccccc,0xffffff,0x3399ff]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "transparent",
-				"axisTitleX.visibility": "collapsed",
-				"axisTitleY.visibility": "collapsed"
-			},
-			"dataSources": {
-				"primary": "ds_ogUYCAgX"
-			}
-		},
-		"viz_6TWN87ZF": {
-			"type": "viz.line",
-			"options": {
-				"fontColor": "transparent",
-				"seriesColors": "[0xcccccc]",
-				"lineDashStyle": "shortDash",
-				"backgroundColor": "transparent",
-				"foregroundColor": "transparent",
-				"legend.placement": "none",
-				"axisTitleX.visibility": "collapsed",
-				"axisTitleY.visibility": "collapsed"
-			},
-			"dataSources": {
-				"primary": "ds_Pk8qKnEe"
-			}
-		},
-		"viz_6jYSo0gz": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeWidth": 2,
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_6s1MmjMj": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_9YaBCZmf": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.75,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_AIL2fUFs": {
-			"type": "viz.fillergauge",
-			"options": {
-				"fontColor": "#cccccc",
-				"chart.style": "minimal",
-				"gaugeColors": "[#666666]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#3399ff",
-				"chart.orientation": "x"
-			},
-			"dataSources": {
-				"primary": "search2"
-			}
-		},
-		"viz_AaqoDLFe": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_BcGFBytj": {
-			"type": "viz.line",
-			"options": {
-				"fontColor": "transparent",
-				"seriesColors": "[0xcccccc]",
-				"lineDashStyle": "shortDash",
-				"backgroundColor": "transparent",
-				"foregroundColor": "transparent",
-				"legend.placement": "none",
-				"axisTitleX.visibility": "collapsed",
-				"axisTitleY.visibility": "collapsed"
-			},
-			"dataSources": {
-				"primary": "ds_Pk8qKnEe"
-			}
-		},
-		"viz_DYdEIWWN": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "#ffffff",
-				"stroke": "#ffffff",
-				"fillOpacity": 0.7,
-				"strokeWidth": 0
-			}
-		},
-		"viz_DnJ9R8Wu": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeWidth": 1,
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_EYhnf8AP": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Table",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_GFN6Q6dV": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeWidth": 1,
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_GP9QlPcA": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "#ffffff",
-				"fillOpacity": 0.7
-			}
-		},
-		"viz_GQQ5rUlS": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_GWwYmz2p": {
-			"type": "viz.column",
-			"options": {
-				"fontColor": "transparent",
-				"stackMode": "stacked",
-				"seriesColors": "[0x333333,0x666666,0xcccccc]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "transparent",
-				"legendPlacement": "none",
-				"axisTitleX.visibility": "collapsed",
-				"axisTitleY.visibility": "collapsed"
-			},
-			"dataSources": {
-				"primary": "ds_9c3ZfeIb"
-			}
-		},
-		"viz_GznWBXEX": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 23
-			}
-		},
-		"viz_HE9FdaLL": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Single Value ",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_ISnopQtM": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.75,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_IntzQO2j": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.75,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_JlkmzJHf": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 12
-			}
-		},
-		"viz_LOTX7AQQ": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 1,
-				"strokeOpacity": 0.08
-			}
-		},
-		"viz_LXrQK31j": {
-			"type": "viz.text",
-			"options": {
-				"color": "#666666",
-				"content": "Created by Stephen Luedtke  | @ArbiterOfData",
-				"fontSize": 15,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_LYTn5U2V": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 12
-			}
-		},
-		"viz_Lhj4tC1Z": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 6,
-				"strokeOpacity": 1
-			}
-		},
-		"viz_LoMrUk76": {
-			"type": "viz.rectangle",
-			"options": {
-				"stroke": "transparent",
-				"fillOpacity": 0.1
-			}
-		},
-		"viz_Lz3Vg686": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "#ffffff",
-				"stroke": "#ffffff",
-				"fillOpacity": 0.05,
-				"strokeWidth": 2,
-				"strokeOpacity": 0.8,
-				"strokeDasharray": 1
-			}
-		},
-		"viz_M9OhGjq3": {
-			"type": "viz.bar",
-			"options": {
-				"fontColor": "#ffffff",
-				"stackMode": "stacked",
-				"seriesColors": "[0x333333,0x666666,0xcccccc]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "transparent",
-				"legendPlacement": "none",
-				"axisTitleX.visibility": "collapsed",
-				"axisTitleY.visibility": "collapsed"
-			},
-			"dataSources": {
-				"primary": "ds_ogUYCAgX"
-			}
-		},
-		"viz_MEDrPXnL": {
-			"type": "viz.line",
-			"options": {
-				"fontColor": "#ffffff",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#cccccc",
-				"axisTitleX.visibility": "collapsed"
-			},
-			"dataSources": {
-				"primary": "ds_Pk8qKnEe"
-			}
-		},
-		"viz_MgGHUnh0": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.75,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_NPnYMg3f": {
-			"type": "viz.bar",
-			"options": {
-				"fontColor": "#ffffff",
-				"stackMode": "stacked",
-				"seriesColors": "[0x333333,0x666666,0xcccccc]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#cccccc"
-			},
-			"dataSources": {
-				"primary": "ds_ogUYCAgX"
-			}
-		},
-		"viz_NfyxUuzx": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Bubble Chart",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_NzpGjM6E": {
-			"type": "viz.singlevalueradial",
-			"options": {
-				"unit": "",
-				"rangeColors": [
-					"#cccccc",
-					"#cccccc",
-					"#cccccc"
-				],
-				"rangeValues": [
-					0,
-					60,
-					100
-				],
-				"backgroundColor": "transparent",
-				"radialStrokeColor": "#3399ff",
-				"showTrendIndicator": false,
-				"radialBackgroundColor": "#333"
-			},
-			"dataSources": {
-				"primary": "ds_RbQhO06f"
-			}
-		},
-		"viz_OWPy12Zk": {
-			"type": "viz.line",
-			"options": {
-				"fontColor": "#cccccc",
-				"seriesColors": "[0x666666]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#cccccc",
-				"legend.placement": "none",
-				"axisTitleX.visibility": "collapsed",
-				"axisTitleY.visibility": "collapsed"
-			},
-			"dataSources": {
-				"primary": "ds_d4b5kRuS"
-			}
-		},
-		"viz_OmzgQcba": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.35,
-				"strokeDasharray": 5
-			}
-		},
-		"viz_PliL2D4d": {
-			"type": "viz.area",
-			"options": {
-				"fontColor": "#ffffff",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#cccccc",
-				"axisTitleX.visibility": "collapsed"
-			},
-			"dataSources": {
-				"primary": "ds_ggAutaVy"
-			}
-		},
-		"viz_QdgPeE0H": {
-			"type": "viz.markergauge",
-			"options": {
-				"fontColor": "#cccccc",
-				"chart.style": "minimal",
-				"gaugeColors": "[#666666,#333333]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#3399ff"
-			},
-			"dataSources": {
-				"primary": "search2"
-			}
-		},
-		"viz_QlWdtTd4": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.75
-			}
-		},
-		"viz_RkiJ6NPl": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.8,
-				"strokeDasharray": 49
-			}
-		},
-		"viz_SjBpp21B": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 2,
-				"strokeOpacity": 0.15
-			}
-		},
-		"viz_UVui4bRR": {
-			"type": "viz.singlevalue",
-			"options": {
-				"color": "#ffffff"
-			},
-			"dataSources": {
-				"primary": "ds_ILYscNIJ"
-			}
-		},
-		"viz_UY22sByX": {
-			"type": "viz.singlevalueradial",
-			"options": {
-				"unit": "",
-				"rangeColors": [
-					"#ffffff",
-					"#ffffff",
-					"#ffffff"
-				],
-				"rangeValues": [
-					0,
-					60,
-					100
-				],
-				"backgroundColor": "transparent",
-				"radialStrokeColor": "#666",
-				"showTrendIndicator": false,
-				"radialBackgroundColor": "#333"
-			},
-			"dataSources": {
-				"primary": "ds_kSZ8xGFE"
-			}
-		},
-		"viz_UlJTWdIk": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.1
-			}
-		},
-		"viz_UlM0oLRp": {
-			"type": "viz.column",
-			"options": {
-				"fontColor": "#ffffff",
-				"seriesColors": "[0x333333,0x666666,0xcccccc]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#cccccc",
-				"axisTitleX.visibility": "collapsed"
-			},
-			"dataSources": {
-				"primary": "ds_9c3ZfeIb"
-			}
-		},
-		"viz_Ux9FxkrU": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 2,
-				"strokeOpacity": 0.25
-			}
-		},
-		"viz_VZj4TS5c": {
-			"type": "viz.geojson.us",
-			"options": {
-				"name": "USA",
-				"source": "geo://default/us",
-				"selector": ".feature",
-				"fillColor": "#EAEFF2",
-				"projection": "mercator",
-				"strokeColor": "#689C8D",
-				"sourceBounds": {
-					"lat": {
-						"max": 50,
-						"min": 24
-					},
-					"long": {
-						"max": -60,
-						"min": -130
-					}
-				},
-				"logicalBounds": {
-					"x": {
-						"max": 800,
-						"min": 0
-					},
-					"y": {
-						"max": 600,
-						"min": 0
-					}
-				},
-				"geoFeatureGroups": [
-					{
-						"name": "lower48",
-						"sourceBounds": {
-							"lat": {
-								"max": 50,
-								"min": 24
-							},
-							"long": {
-								"max": -60,
-								"min": -130
-							}
-						},
-						"featureMatcher": {
-							"regex": "^(?!(AK|HI))",
-							"property": "postal"
-						}
-					},
-					{
-						"name": "Alaska",
-						"sourceBounds": {
-							"lat": {
-								"max": 72,
-								"min": 45
-							},
-							"long": {
-								"max": -120,
-								"min": -180
-							}
-						},
-						"logicalBounds": {
-							"x": {
-								"max": 200,
-								"min": 100
-							},
-							"y": {
-								"max": 425,
-								"min": 325
-							}
-						},
-						"featureMatcher": {
-							"regex": "AK",
-							"property": "postal"
-						}
-					},
-					{
-						"name": "Hawaii",
-						"sourceBounds": {
-							"lat": {
-								"max": 22.461292,
-								"min": 18.665677
-							},
-							"long": {
-								"max": -154.242648,
-								"min": -160.921571
-							}
-						},
-						"logicalBounds": {
-							"x": {
-								"max": 350,
-								"min": 250
-							},
-							"y": {
-								"max": 475,
-								"min": 375
-							}
-						},
-						"featureMatcher": {
-							"regex": "HI",
-							"property": "postal"
-						}
-					}
-				]
-			}
-		},
-		"viz_W0c7IkZS": {
-			"type": "viz.table",
-			"options": {
-				"backgroundColor": "transparent",
-				"headerTextColor": "#708794",
-				"headerBackgroundColor": "transparent",
-				"rowBackgroundColorOdd": "transparent",
-				"rowBackgroundColorEven": "transparent"
-			},
-			"dataSources": {
-				"primary": "ds_Q25orfSz"
-			}
-		},
-		"viz_W4NEoMT1": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Subheading Example",
-				"fontSize": 18,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_WOObbjin": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 5,
-				"strokeOpacity": 0.75
-			}
-		},
-		"viz_WzvVS2tY": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 23
-			}
-		},
-		"viz_Xcz9YKzl": {
-			"type": "viz.table",
-			"options": {
-				"backgroundColor": "transparent",
-				"headerTextColor": "#708794",
-				"headerBackgroundColor": "transparent",
-				"rowBackgroundColorOdd": "transparent",
-				"rowBackgroundColorEven": "transparent"
-			},
-			"dataSources": {
-				"primary": "ds_Q25orfSz"
-			}
-		},
-		"viz_Y90Pqc4f": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.75
-			}
-		},
-		"viz_YQqBCxVu": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#666666",
-				"strokeWidth": 3,
-				"strokeOpacity": 0.7,
-				"strokeDasharray": 15
-			}
-		},
-		"viz_YX6A4UfX": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#666666",
-				"strokeWidth": 3,
-				"strokeOpacity": 0.7,
-				"strokeDasharray": 15
-			}
-		},
-		"viz_Z4eO9nq1": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Filler Gauge",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_Z9catOju": {
-			"type": "viz.rectangle",
-			"options": {
-				"fill": "#ffffff",
-				"stroke": "#ffffff",
-				"fillOpacity": 0.05,
-				"strokeOpacity": 0.3,
-				"strokeDasharray": 6
-			}
-		},
-		"viz_ZSrNodbt": {
-			"type": "viz.singlevalue",
-			"options": {
-				"unit": "",
-				"color": "#ffffff",
-				"colorMode": "",
-				"rangeColors": [
-					"#ffffff",
-					"#ffffff",
-					"#ffffff",
-					"#ffffff"
-				],
-				"rangeValues": [
-					10,
-					100,
-					1000,
-					10000
-				],
-				"unitPosition": "before",
-				"showSparkline": true,
-				"trendDisplayMode": "percent",
-				"sparklinePosition": "below",
-				"showTrendIndicator": false,
-				"showSparklineTooltip": "true",
-				"sparklineStrokeColor": "#ffffff",
-				"useThousandSeparators": true,
-				"sparklineHighlightDots": 7,
-				"sparklineHighlightSegments": 6
-			},
-			"dataSources": {
-				"primary": "ds_d4b5kRuS"
-			}
-		},
-		"viz_ZZtsVri0": {
-			"type": "viz.singlevalueradial",
-			"options": {
-				"unit": "",
-				"rangeColors": [
-					"#cccccc",
-					"#cccccc",
-					"#cccccc"
-				],
-				"rangeValues": [
-					0,
-					60,
-					100
-				],
-				"backgroundColor": "transparent",
-				"radialStrokeColor": "#666",
-				"showTrendIndicator": false,
-				"radialBackgroundColor": "#333"
-			},
-			"dataSources": {
-				"primary": "ds_viWXZ4Yg"
-			}
-		},
-		"viz_ZyGtb4fg": {
-			"type": "viz.text",
-			"options": {
-				"color": "#ffffff",
-				"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a ligula eu lectus tempor vulputate. Pellentesque porttitor eros nec elit tempus gravida. Nullam laoreet vestibulum nunc a vulputate. Ut erat dolor, mollis nec feugiat eget, congue placerat libero. Integer lacinia scelerisque orci, et ",
-				"fontSize": 10
-			}
-		},
-		"viz_ZzO20Pcy": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 4,
-				"strokeOpacity": 0.5
-			}
-		},
-		"viz_aPfzFkz8": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_aY8FG1GI": {
-			"type": "viz.geojson.world",
-			"options": {
-				"name": "USA",
-				"source": "geo://default/world",
-				"selector": ".feature",
-				"fillColor": "#EAEFF2",
-				"projection": "mercator",
-				"strokeColor": "#689C8D",
-				"sourceBounds": {
-					"lat": {
-						"max": 85,
-						"min": -60
-					},
-					"long": {
-						"max": 180,
-						"min": -180
-					}
-				},
-				"logicalBounds": {
-					"x": {
-						"max": 800,
-						"min": 0
-					},
-					"y": {
-						"max": 600,
-						"min": 0
-					}
-				},
-				"strokeHighlightColor": "#000000"
-			}
-		},
-		"viz_bggJreg6": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "#ffffff",
-				"stroke": "#ffffff",
-				"fillOpacity": 0.05,
-				"strokeWidth": 2,
-				"strokeOpacity": 0.8,
-				"strokeDasharray": 1
-			}
-		},
-		"viz_bhxrryzH": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Pie Chart",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_bq69wjtp": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 25
-			}
-		},
-		"viz_c9aWOG6b": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "#ffffff",
-				"stroke": "#ffffff",
-				"fillOpacity": 0.05,
-				"strokeWidth": 1,
-				"strokeOpacity": 0.8,
-				"strokeDasharray": 4
-			}
-		},
-		"viz_cG2921J9": {
-			"type": "viz.rectangle",
-			"options": {
-				"stroke": "transparent",
-				"fillOpacity": 0.3
-			}
-		},
-		"viz_cJZyv8dg": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#0877a6",
-				"strokeOpacity": 0.3,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_dKaX2oLa": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 12
-			}
-		},
-		"viz_fDHRZAxX": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.35,
-				"strokeDasharray": 5
-			}
-		},
-		"viz_gQtUvlRZ": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeWidth": 2,
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_i74VpUH6": {
-			"type": "viz.singlevalueradial",
-			"options": {
-				"unit": "",
-				"rangeColors": [
-					"#cccccc",
-					"#cccccc",
-					"#cccccc"
-				],
-				"rangeValues": [
-					0,
-					60,
-					100
-				],
-				"backgroundColor": "transparent",
-				"radialStrokeColor": "#666",
-				"showTrendIndicator": false,
-				"radialBackgroundColor": "#333"
-			},
-			"dataSources": {
-				"primary": "ds_viWXZ4Yg"
-			}
-		},
-		"viz_iPIAUmes": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#666666",
-				"strokeWidth": 3,
-				"strokeOpacity": 0.7,
-				"strokeDasharray": 70
-			}
-		},
-		"viz_initFYeE": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 12
-			}
-		},
-		"viz_jpZeKR2J": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.75,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_k20TEQyG": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#0877a6",
-				"strokeOpacity": 0.3,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_kBb3w79h": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.1
-			}
-		},
-		"viz_kM6K3vsd": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 2,
-				"strokeOpacity": 0.25
-			}
-		},
-		"viz_kY1KwBd3": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.1
-			}
-		},
-		"viz_kkIOIFwT": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Line Chart",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_kyx2ReqJ": {
-			"type": "viz.rectangle",
-			"options": {
-				"stroke": "transparent",
-				"fillOpacity": 0.03,
-				"strokeOpacity": 0.5
-			}
-		},
-		"viz_lU3hEr86": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 2,
-				"strokeOpacity": 0.25
-			}
-		},
-		"viz_ljnFlssJ": {
-			"type": "viz.text",
-			"options": {
-				"color": "#ffffff",
-				"content": "Main Label",
-				"fontSize": 24,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_loeHZAWw": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "#ffffff",
-				"fillOpacity": 0.7
-			}
-		},
-		"viz_lyyt1zo3": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Marker Gauge",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_ma2xZdPy": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.75,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_msx7aq1i": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Single Value Radial",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_nCJt5pIa": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Column Chart",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_nQz3G1HX": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 12
-			}
-		},
-		"viz_nkdiLuaU": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.75,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_nyyGoE1C": {
-			"type": "viz.singlevalue",
-			"options": {
-				"color": "#ffffff"
-			},
-			"dataSources": {
-				"primary": "ds_E92whgma"
-			}
-		},
-		"viz_ohJDgONN": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 4
-			}
-		},
-		"viz_pZHHYbCD": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.75
-			}
-		},
-		"viz_q6kcwjpg": {
-			"type": "viz.text",
-			"options": {
-				"color": "#708794",
-				"content": "Bar Chart",
-				"fontSize": 21,
-				"fontFamily": "Helvetica"
-			}
-		},
-		"viz_qOR4DHBm": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeWidth": 3,
-				"strokeOpacity": 0.3
-			}
-		},
-		"viz_rLi1un4H": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeWidth": 1,
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_rbOnZAun": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "#ffffff",
-				"fillOpacity": 0.7
-			}
-		},
-		"viz_s34MNyDu": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#c3cbd4",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.5
-			}
-		},
-		"viz_s9nGetJX": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#666666",
-				"strokeWidth": 3,
-				"strokeOpacity": 0.7,
-				"strokeDasharray": 70
-			}
-		},
-		"viz_u8e2FFK3": {
-			"type": "viz.singlevalue",
-			"options": {
-				"unit": "",
-				"color": "#ffffff",
-				"colorMode": "",
-				"rangeColors": [
-					"#ffffff",
-					"#ffffff",
-					"#ffffff",
-					"#ffffff"
-				],
-				"rangeValues": [
-					10,
-					100,
-					1000,
-					10000
-				],
-				"unitPosition": "before",
-				"showSparkline": true,
-				"backgroundColor": "transparent",
-				"trendDisplayMode": "percent",
-				"sparklinePosition": "below",
-				"showTrendIndicator": false,
-				"showSparklineTooltip": "true",
-				"sparklineStrokeColor": "#ffffff",
-				"useThousandSeparators": true,
-				"sparklineHighlightDots": 7,
-				"sparklineHighlightSegments": 6
-			},
-			"encoding": {},
-			"dataSources": {
-				"primary": "ds_Pk8qKnEe"
-			}
-		},
-		"viz_uOzZ8ZS4": {
-			"type": "abslayout.line",
-			"options": {
-				"toArrow": true,
-				"fromArrow": true,
-				"strokeColor": "#ffffff",
-				"strokeWidth": 5,
-				"strokeOpacity": 0.5,
-				"strokeDasharray": 8
-			}
-		},
-		"viz_uh8Yaub1": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.35,
-				"strokeDasharray": 5
-			}
-		},
-		"viz_v6sYjlfK": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "#ffffff",
-				"fillOpacity": 0.7
-			}
-		},
-		"viz_vAIRYze0": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeWidth": 1,
-				"strokeOpacity": 0.4
-			}
-		},
-		"viz_vMHlt8DJ": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#708794",
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 4
-			}
-		},
-		"viz_wIin8gjj": {
-			"type": "viz.rectangle",
-			"options": {
-				"stroke": "#708794",
-				"fillOpacity": 0.1,
-				"strokeOpacity": 0.5
-			}
-		},
-		"viz_xbS6p0UG": {
-			"type": "viz.area",
-			"options": {
-				"fontColor": "#cccccc",
-				"seriesColors": "[0x666666]",
-				"backgroundColor": "transparent",
-				"foregroundColor": "#cccccc",
-				"legend.placement": "none",
-				"axisTitleX.visibility": "collapsed",
-				"axisTitleY.visibility": "collapsed",
-				"annotation.categoryColors": {
-					"Anomaly Detected": "#ffffff"
-				}
-			},
-			"encoding": {
-				"annotationX": "annotation._time",
-				"annotationColor": "annotation.annotation_color",
-				"annotationLabel": "annotation.annotation_label"
-			},
-			"dataSources": {
-				"primary": "ds_B4P9O9oS",
-				"annotation": "ds_whup9VXc"
-			}
-		},
-		"viz_xy05CfMZ": {
-			"type": "viz.ellipse",
-			"options": {
-				"fill": "transparent",
-				"stroke": "#ffffff",
-				"strokeWidth": 7,
-				"strokeOpacity": 0.4,
-				"strokeDasharray": 12
-			}
-		},
-		"viz_yoN8SHiD": {
-			"type": "abslayout.line",
-			"options": {
-				"strokeColor": "#ffffff",
-				"strokeOpacity": 0.75,
-				"strokeDasharray": 8
-			}
-		}
-	}
+            "backgroundImage": {
+                "x": 0,
+                "y": 0,
+                "sizeType": "cover"
+            }
+        },
+        "structure": [
+            {
+                "item": "viz_Y90Pqc4f",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 792,
+                        "y": 1005
+                    },
+                    "from": {
+                        "x": 848,
+                        "y": 1005
+                    }
+                }
+            },
+            {
+                "item": "viz_jpZeKR2J",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 104,
+                        "y": 54
+                    },
+                    "from": {
+                        "x": 104,
+                        "y": 142
+                    }
+                }
+            },
+            {
+                "item": "viz_aPfzFkz8",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 780,
+                        "y": 859
+                    },
+                    "from": {
+                        "x": 717,
+                        "y": 917
+                    }
+                }
+            },
+            {
+                "item": "viz_6s1MmjMj",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1897,
+                        "y": 865
+                    },
+                    "from": {
+                        "x": 1795,
+                        "y": 865
+                    }
+                }
+            },
+            {
+                "item": "viz_Lhj4tC1Z",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1035,
+                        "y": 81
+                    },
+                    "from": {
+                        "x": 1163,
+                        "y": 81
+                    }
+                }
+            },
+            {
+                "item": "viz_s34MNyDu",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 892,
+                        "y": 980
+                    },
+                    "from": {
+                        "x": 892,
+                        "y": 1045
+                    }
+                }
+            },
+            {
+                "item": "viz_1OXpfQyb",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1728,
+                        "y": 849
+                    },
+                    "from": {
+                        "x": 1902,
+                        "y": 848
+                    }
+                }
+            },
+            {
+                "item": "viz_AaqoDLFe",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 650,
+                        "y": 211
+                    },
+                    "from": {
+                        "x": 650,
+                        "y": 271
+                    }
+                }
+            },
+            {
+                "item": "viz_MgGHUnh0",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 757,
+                        "y": 46
+                    },
+                    "from": {
+                        "x": 757,
+                        "y": 134
+                    }
+                }
+            },
+            {
+                "item": "viz_9YaBCZmf",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 888,
+                        "y": 45
+                    },
+                    "from": {
+                        "x": 888,
+                        "y": 133
+                    }
+                }
+            },
+            {
+                "item": "viz_WOObbjin",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1044,
+                        "y": 91
+                    },
+                    "from": {
+                        "x": 1155,
+                        "y": 91
+                    }
+                }
+            },
+            {
+                "item": "viz_ZzO20Pcy",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1056,
+                        "y": 99
+                    },
+                    "from": {
+                        "x": 1144,
+                        "y": 99
+                    }
+                }
+            },
+            {
+                "item": "viz_qOR4DHBm",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1066,
+                        "y": 106
+                    },
+                    "from": {
+                        "x": 1135,
+                        "y": 106
+                    }
+                }
+            },
+            {
+                "item": "viz_SjBpp21B",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1073,
+                        "y": 113
+                    },
+                    "from": {
+                        "x": 1123,
+                        "y": 113
+                    }
+                }
+            },
+            {
+                "item": "viz_LOTX7AQQ",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1082,
+                        "y": 117
+                    },
+                    "from": {
+                        "x": 1118,
+                        "y": 117
+                    }
+                }
+            },
+            {
+                "item": "viz_ma2xZdPy",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1013,
+                        "y": 44
+                    },
+                    "from": {
+                        "x": 1013,
+                        "y": 132
+                    }
+                }
+            },
+            {
+                "item": "viz_1cid4qzH",
+                "type": "block",
+                "position": {
+                    "h": 300,
+                    "w": 360,
+                    "x": 550,
+                    "y": 670
+                }
+            },
+            {
+                "item": "viz_yoN8SHiD",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 196,
+                        "y": 53
+                    },
+                    "from": {
+                        "x": 196,
+                        "y": 141
+                    }
+                }
+            },
+            {
+                "item": "viz_IntzQO2j",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 304,
+                        "y": 52
+                    },
+                    "from": {
+                        "x": 304,
+                        "y": 140
+                    }
+                }
+            },
+            {
+                "item": "viz_0q8Lja0f",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 370,
+                        "y": 41
+                    },
+                    "from": {
+                        "x": 321,
+                        "y": 70
+                    }
+                }
+            },
+            {
+                "item": "viz_kM6K3vsd",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 419,
+                        "y": 128
+                    },
+                    "from": {
+                        "x": 370,
+                        "y": 157
+                    }
+                }
+            },
+            {
+                "item": "viz_lU3hEr86",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 322,
+                        "y": 71
+                    },
+                    "from": {
+                        "x": 322,
+                        "y": 121
+                    }
+                }
+            },
+            {
+                "item": "viz_Ux9FxkrU",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 420,
+                        "y": 71
+                    },
+                    "from": {
+                        "x": 420,
+                        "y": 128
+                    }
+                }
+            },
+            {
+                "item": "viz_6jYSo0gz",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1622,
+                        "y": 90
+                    },
+                    "from": {
+                        "x": 1811,
+                        "y": 90
+                    }
+                }
+            },
+            {
+                "item": "viz_pZHHYbCD",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1838,
+                        "y": 67
+                    },
+                    "from": {
+                        "x": 1811,
+                        "y": 91
+                    }
+                }
+            },
+            {
+                "item": "viz_QlWdtTd4",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1622,
+                        "y": 90
+                    },
+                    "from": {
+                        "x": 1595,
+                        "y": 114
+                    }
+                }
+            },
+            {
+                "item": "viz_OmzgQcba",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 19,
+                        "y": 176
+                    },
+                    "from": {
+                        "x": 1896,
+                        "y": 177
+                    }
+                }
+            },
+            {
+                "item": "viz_uh8Yaub1",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 16,
+                        "y": 383
+                    },
+                    "from": {
+                        "x": 1893,
+                        "y": 384
+                    }
+                }
+            },
+            {
+                "item": "viz_nkdiLuaU",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "item": "viz_xy05CfMZ",
+                        "port": "s"
+                    },
+                    "from": {
+                        "item": "viz_initFYeE",
+                        "port": "n"
+                    }
+                }
+            },
+            {
+                "item": "viz3",
+                "position": {
+                    "h": 150,
+                    "w": 240,
+                    "x": 180,
+                    "y": 610
+                }
+            },
+            {
+                "item": "viz_ISnopQtM",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "item": "viz_dKaX2oLa",
+                        "port": "s"
+                    },
+                    "from": {
+                        "item": "viz_nQz3G1HX",
+                        "port": "n"
+                    }
+                }
+            },
+            {
+                "item": "viz_fDHRZAxX",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 22,
+                        "y": 589
+                    },
+                    "from": {
+                        "x": 1899,
+                        "y": 590
+                    }
+                }
+            },
+            {
+                "item": "viz_GQQ5rUlS",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 720,
+                        "y": 859
+                    },
+                    "from": {
+                        "x": 779,
+                        "y": 922
+                    }
+                }
+            },
+            {
+                "item": "viz_uOzZ8ZS4",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 476,
+                        "y": 700
+                    },
+                    "from": {
+                        "x": 475,
+                        "y": 916
+                    }
+                }
+            },
+            {
+                "item": "viz_gQtUvlRZ",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 651,
+                        "y": 300
+                    },
+                    "from": {
+                        "x": 651,
+                        "y": 360
+                    }
+                }
+            },
+            {
+                "item": "viz_vMHlt8DJ",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 610,
+                        "y": 330
+                    },
+                    "from": {
+                        "x": 650,
+                        "y": 330
+                    }
+                }
+            },
+            {
+                "item": "viz_ohJDgONN",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 610,
+                        "y": 240
+                    },
+                    "from": {
+                        "x": 650,
+                        "y": 240
+                    }
+                }
+            },
+            {
+                "item": "viz_DnJ9R8Wu",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 651,
+                        "y": 211
+                    },
+                    "from": {
+                        "x": 651,
+                        "y": 271
+                    }
+                }
+            },
+            {
+                "item": "viz_vAIRYze0",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 650,
+                        "y": 211
+                    },
+                    "from": {
+                        "x": 676,
+                        "y": 211
+                    }
+                }
+            },
+            {
+                "item": "viz_3c7C4dEb",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 650,
+                        "y": 271
+                    },
+                    "from": {
+                        "x": 676,
+                        "y": 271
+                    }
+                }
+            },
+            {
+                "item": "viz_GFN6Q6dV",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 651,
+                        "y": 300
+                    },
+                    "from": {
+                        "x": 677,
+                        "y": 300
+                    }
+                }
+            },
+            {
+                "item": "viz_rLi1un4H",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 650,
+                        "y": 360
+                    },
+                    "from": {
+                        "x": 676,
+                        "y": 360
+                    }
+                }
+            },
+            {
+                "item": "viz_UlJTWdIk",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 438,
+                        "y": 692
+                    },
+                    "from": {
+                        "x": 18,
+                        "y": 1067
+                    }
+                }
+            },
+            {
+                "item": "viz_2alGed9d",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 18,
+                        "y": 697
+                    },
+                    "from": {
+                        "x": 455,
+                        "y": 1058
+                    }
+                }
+            },
+            {
+                "item": "viz_kY1KwBd3",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 929,
+                        "y": 667
+                    },
+                    "from": {
+                        "x": 509,
+                        "y": 1042
+                    }
+                }
+            },
+            {
+                "item": "viz_kBb3w79h",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 560,
+                        "y": 612
+                    },
+                    "from": {
+                        "x": 997,
+                        "y": 973
+                    }
+                }
+            },
+            {
+                "item": "viz_Lz3Vg686",
+                "type": "block",
+                "position": {
+                    "h": 70,
+                    "w": 70,
+                    "x": 440,
+                    "y": 620
+                }
+            },
+            {
+                "item": "viz_RkiJ6NPl",
+                "type": "block",
+                "position": {
+                    "h": 100,
+                    "w": 100,
+                    "x": 900,
+                    "y": 50
+                }
+            },
+            {
+                "item": "viz_wIin8gjj",
+                "type": "block",
+                "position": {
+                    "h": 100,
+                    "w": 290,
+                    "x": 1270,
+                    "y": 50
+                }
+            },
+            {
+                "item": "viz_6TWN87ZF",
+                "type": "block",
+                "position": {
+                    "h": 110,
+                    "w": 260,
+                    "x": 630,
+                    "y": 210
+                }
+            },
+            {
+                "item": "viz_WzvVS2tY",
+                "type": "block",
+                "position": {
+                    "h": 50,
+                    "w": 50,
+                    "x": 450,
+                    "y": 630
+                }
+            },
+            {
+                "item": "viz_c9aWOG6b",
+                "type": "block",
+                "position": {
+                    "h": 80,
+                    "w": 80,
+                    "x": 910,
+                    "y": 60
+                }
+            },
+            {
+                "item": "viz_1zlMUWTs",
+                "type": "block",
+                "position": {
+                    "h": 100,
+                    "w": 100,
+                    "x": 900,
+                    "y": 50
+                }
+            },
+            {
+                "item": "viz_NzpGjM6E",
+                "type": "block",
+                "position": {
+                    "h": 80,
+                    "w": 80,
+                    "x": 20,
+                    "y": 60
+                }
+            },
+            {
+                "item": "viz_UY22sByX",
+                "type": "block",
+                "position": {
+                    "h": 80,
+                    "w": 80,
+                    "x": 210,
+                    "y": 60
+                }
+            },
+            {
+                "item": "viz_ZZtsVri0",
+                "type": "block",
+                "position": {
+                    "h": 80,
+                    "w": 80,
+                    "x": 110,
+                    "y": 60
+                }
+            },
+            {
+                "item": "viz_nyyGoE1C",
+                "type": "block",
+                "position": {
+                    "h": 60,
+                    "w": 80,
+                    "x": 910,
+                    "y": 70
+                }
+            },
+            {
+                "item": "viz_UVui4bRR",
+                "type": "block",
+                "position": {
+                    "h": 40,
+                    "w": 160,
+                    "x": 1020,
+                    "y": 40
+                }
+            },
+            {
+                "item": "viz_ZSrNodbt",
+                "type": "block",
+                "position": {
+                    "h": 60,
+                    "w": 110,
+                    "x": 770,
+                    "y": 70
+                }
+            },
+            {
+                "item": "viz_u8e2FFK3",
+                "type": "block",
+                "position": {
+                    "h": 60,
+                    "w": 110,
+                    "x": 630,
+                    "y": 70
+                }
+            },
+            {
+                "item": "viz_msx7aq1i",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 20,
+                    "y": 0
+                }
+            },
+            {
+                "item": "viz_HE9FdaLL",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 610,
+                    "y": 0
+                }
+            },
+            {
+                "item": "viz_i74VpUH6",
+                "type": "block",
+                "position": {
+                    "h": 80,
+                    "w": 80,
+                    "x": 330,
+                    "y": 60
+                }
+            },
+            {
+                "item": "viz_Z9catOju",
+                "type": "block",
+                "position": {
+                    "h": 80,
+                    "w": 80,
+                    "x": 210,
+                    "y": 60
+                }
+            },
+            {
+                "item": "viz_MEDrPXnL",
+                "type": "block",
+                "position": {
+                    "h": 130,
+                    "w": 270,
+                    "x": 20,
+                    "y": 230
+                }
+            },
+            {
+                "item": "viz_kkIOIFwT",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 20,
+                    "y": 180
+                }
+            },
+            {
+                "item": "viz_OWPy12Zk",
+                "type": "block",
+                "position": {
+                    "h": 130,
+                    "w": 280,
+                    "x": 270,
+                    "y": 230
+                }
+            },
+            {
+                "item": "viz_ZyGtb4fg",
+                "type": "block",
+                "position": {
+                    "h": 110,
+                    "w": 250,
+                    "x": 1290,
+                    "y": 50
+                }
+            },
+            {
+                "item": "viz_43wBZAwe",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 1260,
+                    "y": 0
+                }
+            },
+            {
+                "item": "viz_W4NEoMT1",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 1630,
+                    "y": 80
+                }
+            },
+            {
+                "item": "viz_ljnFlssJ",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 1650,
+                    "y": 40
+                }
+            },
+            {
+                "item": "viz_bq69wjtp",
+                "type": "block",
+                "position": {
+                    "h": 70,
+                    "w": 70,
+                    "x": 440,
+                    "y": 60
+                }
+            },
+            {
+                "item": "viz_GP9QlPcA",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 30,
+                    "x": 460,
+                    "y": 80
+                }
+            },
+            {
+                "item": "viz_1e2fkKRH",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 950,
+                    "y": 180
+                }
+            },
+            {
+                "item": "viz_PliL2D4d",
+                "type": "block",
+                "position": {
+                    "h": 150,
+                    "w": 320,
+                    "x": 940,
+                    "y": 220
+                }
+            },
+            {
+                "item": "viz_xbS6p0UG",
+                "type": "block",
+                "position": {
+                    "h": 150,
+                    "w": 320,
+                    "x": 1260,
+                    "y": 220
+                }
+            },
+            {
+                "item": "viz_59f5CC6N",
+                "type": "block",
+                "position": {
+                    "h": 150,
+                    "w": 320,
+                    "x": 1570,
+                    "y": 220
+                }
+            },
+            {
+                "item": "viz_NPnYMg3f",
+                "type": "block",
+                "position": {
+                    "h": 130,
+                    "w": 420,
+                    "x": 20,
+                    "y": 440
+                }
+            },
+            {
+                "item": "viz_q6kcwjpg",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 20,
+                    "y": 380
+                }
+            },
+            {
+                "item": "viz_M9OhGjq3",
+                "type": "block",
+                "position": {
+                    "h": 130,
+                    "w": 420,
+                    "x": 490,
+                    "y": 440
+                }
+            },
+            {
+                "item": "viz_nCJt5pIa",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 1000,
+                    "y": 380
+                }
+            },
+            {
+                "item": "viz_UlM0oLRp",
+                "type": "block",
+                "position": {
+                    "h": 150,
+                    "w": 440,
+                    "x": 990,
+                    "y": 430
+                }
+            },
+            {
+                "item": "viz_GWwYmz2p",
+                "type": "block",
+                "position": {
+                    "h": 200,
+                    "w": 430,
+                    "x": 1440,
+                    "y": 390
+                }
+            },
+            {
+                "item": "viz_xy05CfMZ",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 30,
+                    "x": 940,
+                    "y": 400
+                }
+            },
+            {
+                "item": "viz_dKaX2oLa",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 30,
+                    "x": 900,
+                    "y": 200
+                }
+            },
+            {
+                "item": "viz_initFYeE",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 30,
+                    "x": 940,
+                    "y": 550
+                }
+            },
+            {
+                "item": "viz_nQz3G1HX",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 30,
+                    "x": 900,
+                    "y": 330
+                }
+            },
+            {
+                "item": "viz_5g7gL2Ax",
+                "type": "block",
+                "position": {
+                    "h": 240,
+                    "w": 510,
+                    "x": 0,
+                    "y": 840
+                }
+            },
+            {
+                "item": "viz_Xcz9YKzl",
+                "type": "block",
+                "position": {
+                    "h": 190,
+                    "w": 400,
+                    "x": 940,
+                    "y": 660
+                }
+            },
+            {
+                "item": "viz_kyx2ReqJ",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 180,
+                    "x": 510,
+                    "y": 1020
+                }
+            },
+            {
+                "item": "viz_LoMrUk76",
+                "type": "block",
+                "position": {
+                    "h": 20,
+                    "w": 100,
+                    "x": 740,
+                    "y": 1030
+                }
+            },
+            {
+                "item": "viz_cG2921J9",
+                "type": "block",
+                "position": {
+                    "h": 20,
+                    "w": 100,
+                    "x": 610,
+                    "y": 1010
+                }
+            },
+            {
+                "item": "viz_JlkmzJHf",
+                "type": "block",
+                "position": {
+                    "h": 40,
+                    "w": 40,
+                    "x": 570,
+                    "y": 220
+                }
+            },
+            {
+                "item": "viz_044cdUw0",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 208,
+                    "x": 1350,
+                    "y": 600
+                }
+            },
+            {
+                "item": "viz_lyyt1zo3",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 160,
+                    "x": 20,
+                    "y": 600
+                }
+            },
+            {
+                "item": "viz_Z4eO9nq1",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 140,
+                    "x": 250,
+                    "y": 600
+                }
+            },
+            {
+                "item": "viz_bhxrryzH",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 140,
+                    "x": 20,
+                    "y": 800
+                }
+            },
+            {
+                "item": "viz_DYdEIWWN",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 30,
+                    "x": 460,
+                    "y": 640
+                }
+            },
+            {
+                "item": "viz_GznWBXEX",
+                "type": "block",
+                "position": {
+                    "h": 50,
+                    "w": 50,
+                    "x": 450,
+                    "y": 940
+                }
+            },
+            {
+                "item": "viz_v6sYjlfK",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 30,
+                    "x": 460,
+                    "y": 950
+                }
+            },
+            {
+                "item": "viz_NfyxUuzx",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 140,
+                    "x": 540,
+                    "y": 600
+                }
+            },
+            {
+                "item": "viz_EYhnf8AP",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 140,
+                    "x": 950,
+                    "y": 600
+                }
+            },
+            {
+                "item": "viz_LXrQK31j",
+                "type": "block",
+                "position": {
+                    "h": 30,
+                    "w": 340,
+                    "x": 1590,
+                    "y": 120
+                }
+            },
+            {
+                "item": "viz_W0c7IkZS",
+                "type": "block",
+                "position": {
+                    "h": 190,
+                    "w": 400,
+                    "x": 940,
+                    "y": 860
+                }
+            },
+            {
+                "item": "viz_BcGFBytj",
+                "type": "block",
+                "position": {
+                    "h": 110,
+                    "w": 260,
+                    "x": 630,
+                    "y": 300
+                }
+            },
+            {
+                "item": "viz_LYTn5U2V",
+                "type": "block",
+                "position": {
+                    "h": 40,
+                    "w": 40,
+                    "x": 570,
+                    "y": 310
+                }
+            },
+            {
+                "item": "viz_rbOnZAun",
+                "type": "block",
+                "position": {
+                    "h": 20,
+                    "w": 20,
+                    "x": 580,
+                    "y": 230
+                }
+            },
+            {
+                "item": "viz_loeHZAWw",
+                "type": "block",
+                "position": {
+                    "h": 20,
+                    "w": 20,
+                    "x": 580,
+                    "y": 320
+                }
+            },
+            {
+                "item": "viz_bggJreg6",
+                "type": "block",
+                "position": {
+                    "h": 70,
+                    "w": 70,
+                    "x": 440,
+                    "y": 930
+                }
+            },
+            {
+                "item": "viz_cJZyv8dg",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1670,
+                        "y": 732
+                    },
+                    "from": {
+                        "x": 1659,
+                        "y": 810
+                    }
+                }
+            },
+            {
+                "item": "viz4",
+                "position": {
+                    "h": 160,
+                    "w": 50,
+                    "x": 40,
+                    "y": 650
+                }
+            },
+            {
+                "item": "viz_k20TEQyG",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 1663,
+                        "y": 726
+                    },
+                    "from": {
+                        "x": 1585,
+                        "y": 780
+                    }
+                }
+            },
+            {
+                "item": "viz_QdgPeE0H",
+                "position": {
+                    "h": 160,
+                    "w": 50,
+                    "x": 110,
+                    "y": 650
+                }
+            },
+            {
+                "item": "viz_AIL2fUFs",
+                "position": {
+                    "h": 150,
+                    "w": 240,
+                    "x": 180,
+                    "y": 740
+                }
+            },
+            {
+                "item": "viz_iPIAUmes",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 420,
+                        "y": 661
+                    },
+                    "from": {
+                        "x": 196,
+                        "y": 662
+                    }
+                }
+            },
+            {
+                "item": "viz_s9nGetJX",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 420,
+                        "y": 709
+                    },
+                    "from": {
+                        "x": 196,
+                        "y": 710
+                    }
+                }
+            },
+            {
+                "item": "viz_YQqBCxVu",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 407,
+                        "y": 662
+                    },
+                    "from": {
+                        "x": 407,
+                        "y": 707
+                    }
+                }
+            },
+            {
+                "item": "viz_YX6A4UfX",
+                "type": "line",
+                "position": {
+                    "to": {
+                        "x": 196,
+                        "y": 663
+                    },
+                    "from": {
+                        "x": 196,
+                        "y": 708
+                    }
+                }
+            },
+            {
+                "item": "viz_VZj4TS5c",
+                "type": "block",
+                "position": {
+                    "h": 210,
+                    "w": 310,
+                    "x": 1360,
+                    "y": 660
+                }
+            },
+            {
+                "item": "viz_aY8FG1GI",
+                "type": "block",
+                "position": {
+                    "h": 210,
+                    "w": 330,
+                    "x": 1630,
+                    "y": 840
+                }
+            }
+        ]
+    },
+    "title": "Visualizations",
+    "description": "",
+    "defaults": {},
+    "visualizations": {
+        "viz3": {
+            "options": {
+                "gaugeColor": "> value | rangeValue(gaugeColorRangeValueContext)",
+                "value": "> primary | seriesByIndex(0) | lastPoint()",
+                "backgroundColor": "transparent"
+            },
+            "type": "splunk.fillergauge",
+            "dataSources": {
+                "primary": "search1"
+            },
+            "context": {
+                "gaugeColorRangeValueContext": [
+                    {
+                        "to": 10,
+                        "value": "#5fbcff"
+                    },
+                    {
+                        "from": 10,
+                        "to": 30,
+                        "value": "#4beba8"
+                    },
+                    {
+                        "from": 30,
+                        "to": 50,
+                        "value": "#f4df7a"
+                    },
+                    {
+                        "from": 50,
+                        "to": 70,
+                        "value": "#fc9850"
+                    },
+                    {
+                        "from": 70,
+                        "to": 100,
+                        "value": "#ff7152"
+                    }
+                ]
+            }
+        },
+        "viz4": {
+            "options": {
+                "gaugeRanges": [
+                    {
+                        "from": 90,
+                        "to": 100,
+                        "value": "#CB3B43"
+                    },
+                    {
+                        "from": 50,
+                        "to": 90,
+                        "value": "#F4DF7A"
+                    },
+                    {
+                        "from": 0,
+                        "to": 50,
+                        "value": "#4BEBA8"
+                    }
+                ],
+                "value": "> primary | seriesByIndex(0) | lastPoint()",
+                "backgroundColor": "transparent"
+            },
+            "type": "splunk.markergauge",
+            "dataSources": {
+                "primary": "search1"
+            },
+            "context": {}
+        },
+        "viz_044cdUw0": {
+            "options": {
+                "markdown": "Choropleth Maps",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_0q8Lja0f": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 2,
+                "strokeOpacity": 0.25
+            }
+        },
+        "viz_1OXpfQyb": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_1cid4qzH": {
+            "type": "splunk.bubble",
+            "dataSources": {
+                "primary": "ds_J9Pm0DlV"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "legendTruncation": "ellipsisMiddle",
+                "seriesColors": [
+                    "#333333",
+                    "#666666",
+                    "#cccccc",
+                    "#ffffff"
+                ],
+                "backgroundColor": "transparent"
+            },
+            "context": {}
+        },
+        "viz_1e2fkKRH": {
+            "options": {
+                "markdown": "Area Chart",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_1zlMUWTs": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.8
+            },
+            "context": {}
+        },
+        "viz_2alGed9d": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.1
+            }
+        },
+        "viz_3c7C4dEb": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeWidth": 1,
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_43wBZAwe": {
+            "options": {
+                "markdown": "Text Examples",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_59f5CC6N": {
+            "type": "splunk.area",
+            "dataSources": {
+                "primary": "search3"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "seriesColors": [
+                    "#cccccc",
+                    "#666666"
+                ],
+                "backgroundColor": "transparent",
+                "legendDisplay": "off",
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide",
+                "x": "> primary | seriesByName(\"_time\")",
+                "y": "> primary | seriesByIndex(1)",
+                "y2": "> primary | seriesByIndex(2)"
+            },
+            "context": {}
+        },
+        "viz_5g7gL2Ax": {
+            "type": "splunk.pie",
+            "dataSources": {
+                "primary": "ds_ogUYCAgX"
+            },
+            "options": {
+                "seriesColors": [
+                    "#333333",
+                    "#666666",
+                    "#cccccc",
+                    "#ffffff",
+                    "#3399ff"
+                ],
+                "backgroundColor": "transparent"
+            },
+            "context": {}
+        },
+        "viz_6TWN87ZF": {
+            "type": "splunk.line",
+            "dataSources": {
+                "primary": "ds_Pk8qKnEe"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "seriesColors": [
+                    "#cccccc"
+                ],
+                "lineDashStyle": "shortDash",
+                "backgroundColor": "transparent",
+                "legendDisplay": "off",
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide"
+            },
+            "context": {}
+        },
+        "viz_6jYSo0gz": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeWidth": 2,
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_6s1MmjMj": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_9YaBCZmf": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.75,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_AIL2fUFs": {
+            "options": {
+                "gaugeColor": "> value | rangeValue(gaugeColorRangeValueContext)",
+                "value": "> primary | seriesByIndex(0) | lastPoint()",
+                "backgroundColor": "transparent"
+            },
+            "type": "splunk.fillergauge",
+            "dataSources": {
+                "primary": "search2"
+            },
+            "context": {
+                "gaugeColorRangeValueContext": [
+                    {
+                        "to": 10,
+                        "value": "#5fbcff"
+                    },
+                    {
+                        "from": 10,
+                        "to": 30,
+                        "value": "#4beba8"
+                    },
+                    {
+                        "from": 30,
+                        "to": 50,
+                        "value": "#f4df7a"
+                    },
+                    {
+                        "from": 50,
+                        "to": 70,
+                        "value": "#fc9850"
+                    },
+                    {
+                        "from": 70,
+                        "to": 100,
+                        "value": "#ff7152"
+                    }
+                ]
+            }
+        },
+        "viz_AaqoDLFe": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_BcGFBytj": {
+            "type": "splunk.line",
+            "dataSources": {
+                "primary": "ds_Pk8qKnEe"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "seriesColors": [
+                    "#cccccc"
+                ],
+                "lineDashStyle": "shortDash",
+                "backgroundColor": "transparent",
+                "legendDisplay": "off",
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide"
+            },
+            "context": {}
+        },
+        "viz_DYdEIWWN": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "#ffffff",
+                "strokeColor": "#ffffff",
+                "fillOpacity": 0.7,
+                "strokeWidth": 0
+            },
+            "context": {}
+        },
+        "viz_DnJ9R8Wu": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeWidth": 1,
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_EYhnf8AP": {
+            "options": {
+                "markdown": "Table",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_GFN6Q6dV": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeWidth": 1,
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_GP9QlPcA": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "#ffffff",
+                "fillOpacity": 0.7
+            },
+            "context": {}
+        },
+        "viz_GQQ5rUlS": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_GWwYmz2p": {
+            "type": "splunk.column",
+            "dataSources": {
+                "primary": "ds_9c3ZfeIb"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "stackMode": "stacked",
+                "seriesColors": [
+                    "#333333",
+                    "#666666",
+                    "#cccccc"
+                ],
+                "backgroundColor": "transparent",
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide"
+            },
+            "context": {}
+        },
+        "viz_GznWBXEX": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.4,
+                "strokeDashStyle": 23
+            },
+            "context": {}
+        },
+        "viz_HE9FdaLL": {
+            "options": {
+                "markdown": "Single Value ",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_ISnopQtM": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.75,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_IntzQO2j": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.75,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_JlkmzJHf": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.4,
+                "strokeDashStyle": 12
+            },
+            "context": {}
+        },
+        "viz_LOTX7AQQ": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 1,
+                "strokeOpacity": 0.08
+            }
+        },
+        "viz_LXrQK31j": {
+            "options": {
+                "markdown": "Created by Stephen Luedtke  | @ArbiterOfData",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 15,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_LYTn5U2V": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.4,
+                "strokeDashStyle": 12
+            },
+            "context": {}
+        },
+        "viz_Lhj4tC1Z": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 6,
+                "strokeOpacity": 1
+            }
+        },
+        "viz_LoMrUk76": {
+            "type": "splunk.rectangle",
+            "options": {
+                "strokeColor": "transparent",
+                "fillOpacity": 0.1
+            },
+            "context": {}
+        },
+        "viz_Lz3Vg686": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "#ffffff",
+                "strokeColor": "#ffffff",
+                "fillOpacity": 0.05,
+                "strokeWidth": 2,
+                "strokeOpacity": 0.8,
+                "strokeDashStyle": 1
+            },
+            "context": {}
+        },
+        "viz_M9OhGjq3": {
+            "type": "splunk.bar",
+            "dataSources": {
+                "primary": "ds_ogUYCAgX"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "stackMode": "stacked",
+                "seriesColors": [
+                    "#333333",
+                    "#666666",
+                    "#cccccc"
+                ],
+                "backgroundColor": "transparent",
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide"
+            },
+            "context": {}
+        },
+        "viz_MEDrPXnL": {
+            "type": "splunk.line",
+            "dataSources": {
+                "primary": "ds_Pk8qKnEe"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "backgroundColor": "transparent",
+                "xAxisTitleVisibility": "hide"
+            },
+            "context": {}
+        },
+        "viz_MgGHUnh0": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.75,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_NPnYMg3f": {
+            "type": "splunk.bar",
+            "dataSources": {
+                "primary": "ds_ogUYCAgX"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "stackMode": "stacked",
+                "seriesColors": [
+                    "#333333",
+                    "#666666",
+                    "#cccccc"
+                ],
+                "backgroundColor": "transparent"
+            },
+            "context": {}
+        },
+        "viz_NfyxUuzx": {
+            "options": {
+                "markdown": "Bubble Chart",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_NzpGjM6E": {
+            "type": "splunk.singlevalueradial",
+            "dataSources": {
+                "primary": "ds_RbQhO06f"
+            },
+            "context": {},
+            "options": {
+                "majorValue": "> primary | seriesByIndex(0) | lastPoint()",
+                "trendValue": "> primary | seriesByIndex(0) | delta(-2)",
+                "unit": "",
+                "backgroundColor": "transparent",
+                "radialStrokeColor": "#3399ff",
+                "radialBackgroundColor": "#333333",
+                "trendDisplay": "off"
+            }
+        },
+        "viz_OWPy12Zk": {
+            "type": "splunk.line",
+            "dataSources": {
+                "primary": "ds_d4b5kRuS"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "seriesColors": [
+                    "#666666"
+                ],
+                "backgroundColor": "transparent",
+                "legendDisplay": "off",
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide"
+            },
+            "context": {}
+        },
+        "viz_OmzgQcba": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.35,
+                "strokeDasharray": 5
+            }
+        },
+        "viz_PliL2D4d": {
+            "type": "splunk.area",
+            "dataSources": {
+                "primary": "ds_ggAutaVy"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "backgroundColor": "transparent",
+                "xAxisTitleVisibility": "hide"
+            },
+            "context": {}
+        },
+        "viz_QdgPeE0H": {
+            "options": {
+                "gaugeRanges": [
+                    {
+                        "from": 90,
+                        "to": 100,
+                        "value": "#CB3B43"
+                    },
+                    {
+                        "from": 50,
+                        "to": 90,
+                        "value": "#F4DF7A"
+                    },
+                    {
+                        "from": 0,
+                        "to": 50,
+                        "value": "#4BEBA8"
+                    }
+                ],
+                "value": "> primary | seriesByIndex(0) | lastPoint()",
+                "backgroundColor": "transparent"
+            },
+            "type": "splunk.markergauge",
+            "dataSources": {
+                "primary": "search2"
+            },
+            "context": {}
+        },
+        "viz_QlWdtTd4": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.75
+            }
+        },
+        "viz_RkiJ6NPl": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.8,
+                "strokeDashStyle": 49
+            },
+            "context": {}
+        },
+        "viz_SjBpp21B": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 2,
+                "strokeOpacity": 0.15
+            }
+        },
+        "viz_UVui4bRR": {
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "ds_ILYscNIJ"
+            },
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByTypes(\"number\", \"string\")"
+            }
+        },
+        "viz_UY22sByX": {
+            "type": "splunk.singlevalueradial",
+            "dataSources": {
+                "primary": "ds_kSZ8xGFE"
+            },
+            "context": {},
+            "options": {
+                "majorValue": "> primary | seriesByIndex(0) | lastPoint()",
+                "trendValue": "> primary | seriesByIndex(0) | delta(-2)",
+                "unit": "",
+                "backgroundColor": "transparent",
+                "radialStrokeColor": "#666666",
+                "radialBackgroundColor": "#333333",
+                "trendDisplay": "off"
+            }
+        },
+        "viz_UlJTWdIk": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.1
+            }
+        },
+        "viz_UlM0oLRp": {
+            "type": "splunk.column",
+            "dataSources": {
+                "primary": "ds_9c3ZfeIb"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "seriesColors": [
+                    "#333333",
+                    "#666666",
+                    "#cccccc"
+                ],
+                "backgroundColor": "transparent",
+                "xAxisTitleVisibility": "hide"
+            },
+            "context": {}
+        },
+        "viz_Ux9FxkrU": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 2,
+                "strokeOpacity": 0.25
+            }
+        },
+        "viz_VZj4TS5c": {
+            "type": "splunk.map",
+            "options": {
+                "layers": [
+                    {
+                        "type": "choropleth",
+                        "source": "geo://default/us",
+                        "dataColors": "> areaValues | gradient(fillGradientContext)",
+                        "choroplethEmptyAreaColor": "> themes.defaultChoroplethEmptyAreaColor",
+                        "choroplethStrokeColor": "> themes.defaultBackgroundColor",
+                        "choroplethOpacity": 1
+                    }
+                ],
+                "showScale": false,
+                "showBaseLayer": false,
+                "showZoomControls": false,
+                "center": [
+                    36.14394836670732,
+                    -100.64377438992983
+                ],
+                "zoom": 1.662631821550729
+            },
+            "context": {
+                "fillGradientContext": {
+                    "colors": "> themes.defaultGradientMigrationConfig"
+                }
+            }
+        },
+        "viz_W0c7IkZS": {
+            "type": "splunk.table",
+            "dataSources": {
+                "primary": "ds_Q25orfSz"
+            },
+            "options": {
+                "count": 20,
+                "tableFormat": {
+                    "data": "> table | formatByType(formattedConfig)",
+                    "rowBackgroundColors": "> table | pick(rowBackgroundColorsConfig)",
+                    "headerColor": "#708794",
+                    "headerBackgroundColor": "transparent"
+                },
+                "backgroundColor": "transparent"
+            },
+            "context": {
+                "formattedConfig": {
+                    "number": {
+                        "precision": 0,
+                        "thousandSeparated": false,
+                        "unitPosition": "after"
+                    },
+                    "string": {
+                        "unitPosition": "after"
+                    }
+                },
+                "rowBackgroundColorsConfig": [
+                    "transparent",
+                    "transparent"
+                ]
+            }
+        },
+        "viz_W4NEoMT1": {
+            "options": {
+                "markdown": "Subheading Example",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 18,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_WOObbjin": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 5,
+                "strokeOpacity": 0.75
+            }
+        },
+        "viz_WzvVS2tY": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.4,
+                "strokeDashStyle": 23
+            },
+            "context": {}
+        },
+        "viz_Xcz9YKzl": {
+            "type": "splunk.table",
+            "dataSources": {
+                "primary": "ds_Q25orfSz"
+            },
+            "options": {
+                "count": 20,
+                "tableFormat": {
+                    "data": "> table | formatByType(formattedConfig)",
+                    "rowBackgroundColors": "> table | pick(rowBackgroundColorsConfig)",
+                    "headerColor": "#708794",
+                    "headerBackgroundColor": "transparent"
+                },
+                "backgroundColor": "transparent"
+            },
+            "context": {
+                "formattedConfig": {
+                    "number": {
+                        "precision": 0,
+                        "thousandSeparated": false,
+                        "unitPosition": "after"
+                    },
+                    "string": {
+                        "unitPosition": "after"
+                    }
+                },
+                "rowBackgroundColorsConfig": [
+                    "transparent",
+                    "transparent"
+                ]
+            }
+        },
+        "viz_Y90Pqc4f": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.75
+            }
+        },
+        "viz_YQqBCxVu": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#666666",
+                "strokeWidth": 3,
+                "strokeOpacity": 0.7,
+                "strokeDasharray": 15
+            }
+        },
+        "viz_YX6A4UfX": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#666666",
+                "strokeWidth": 3,
+                "strokeOpacity": 0.7,
+                "strokeDasharray": 15
+            }
+        },
+        "viz_Z4eO9nq1": {
+            "options": {
+                "markdown": "Filler Gauge",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_Z9catOju": {
+            "type": "splunk.rectangle",
+            "options": {
+                "fillColor": "#ffffff",
+                "strokeColor": "#ffffff",
+                "fillOpacity": 0.05,
+                "strokeOpacity": 0.3,
+                "strokeDashStyle": 6
+            },
+            "context": {}
+        },
+        "viz_ZSrNodbt": {
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "ds_d4b5kRuS"
+            },
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByTypes(\"number\", \"string\")",
+                "unit": "",
+                "unitPosition": "before",
+                "showSparklineTooltip": true,
+                "sparklineStrokeColor": "#ffffff",
+                "shouldUseThousandSeparators": true,
+                "sparklineHighlightDots": 7,
+                "sparklineHighlightSegments": 6,
+                "trendDisplay": "off",
+                "sparklineDisplay": "below"
+            }
+        },
+        "viz_ZZtsVri0": {
+            "type": "splunk.singlevalueradial",
+            "dataSources": {
+                "primary": "ds_viWXZ4Yg"
+            },
+            "context": {},
+            "options": {
+                "majorValue": "> primary | seriesByIndex(0) | lastPoint()",
+                "trendValue": "> primary | seriesByIndex(0) | delta(-2)",
+                "unit": "",
+                "backgroundColor": "transparent",
+                "radialStrokeColor": "#666666",
+                "radialBackgroundColor": "#333333",
+                "trendDisplay": "off"
+            }
+        },
+        "viz_ZyGtb4fg": {
+            "options": {
+                "markdown": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a ligula eu lectus tempor vulputate. Pellentesque porttitor eros nec elit tempus gravida. Nullam laoreet vestibulum nunc a vulputate. Ut erat dolor, mollis nec feugiat eget, congue placerat libero. Integer lacinia scelerisque orci, et ",
+                "fontSize": "custom",
+                "customFontSize": 10,
+                "fontFamily": "Splunk Platform Sans",
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_ZzO20Pcy": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 4,
+                "strokeOpacity": 0.5
+            }
+        },
+        "viz_aPfzFkz8": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_aY8FG1GI": {
+            "type": "splunk.map",
+            "options": {
+                "layers": [
+                    {
+                        "type": "choropleth",
+                        "source": "geo://default/world",
+                        "dataColors": "> areaValues | gradient(fillGradientContext)",
+                        "choroplethEmptyAreaColor": "> themes.defaultChoroplethEmptyAreaColor",
+                        "choroplethStrokeColor": "> themes.defaultBackgroundColor",
+                        "choroplethOpacity": 1
+                    }
+                ],
+                "showScale": false,
+                "showBaseLayer": false,
+                "showZoomControls": false,
+                "center": [
+                    46.56000000000077,
+                    10.350000000000705
+                ],
+                "zoom": 0
+            },
+            "context": {
+                "fillGradientContext": {
+                    "colors": "> themes.defaultGradientMigrationConfig"
+                }
+            }
+        },
+        "viz_bggJreg6": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "#ffffff",
+                "strokeColor": "#ffffff",
+                "fillOpacity": 0.05,
+                "strokeWidth": 2,
+                "strokeOpacity": 0.8,
+                "strokeDashStyle": 1
+            },
+            "context": {}
+        },
+        "viz_bhxrryzH": {
+            "options": {
+                "markdown": "Pie Chart",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_bq69wjtp": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.4,
+                "strokeDashStyle": 25
+            },
+            "context": {}
+        },
+        "viz_c9aWOG6b": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "#ffffff",
+                "strokeColor": "#ffffff",
+                "fillOpacity": 0.05,
+                "strokeWidth": 1,
+                "strokeOpacity": 0.8,
+                "strokeDashStyle": 4
+            },
+            "context": {}
+        },
+        "viz_cG2921J9": {
+            "type": "splunk.rectangle",
+            "options": {
+                "strokeColor": "transparent",
+                "fillOpacity": 0.3
+            },
+            "context": {}
+        },
+        "viz_cJZyv8dg": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#0877a6",
+                "strokeOpacity": 0.3,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_dKaX2oLa": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.4,
+                "strokeDashStyle": 12
+            },
+            "context": {}
+        },
+        "viz_fDHRZAxX": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.35,
+                "strokeDasharray": 5
+            }
+        },
+        "viz_gQtUvlRZ": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeWidth": 2,
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_i74VpUH6": {
+            "type": "splunk.singlevalueradial",
+            "dataSources": {
+                "primary": "ds_viWXZ4Yg"
+            },
+            "context": {},
+            "options": {
+                "majorValue": "> primary | seriesByIndex(0) | lastPoint()",
+                "trendValue": "> primary | seriesByIndex(0) | delta(-2)",
+                "unit": "",
+                "backgroundColor": "transparent",
+                "radialStrokeColor": "#666666",
+                "radialBackgroundColor": "#333333",
+                "trendDisplay": "off"
+            }
+        },
+        "viz_iPIAUmes": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#666666",
+                "strokeWidth": 3,
+                "strokeOpacity": 0.7,
+                "strokeDasharray": 70
+            }
+        },
+        "viz_initFYeE": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.4,
+                "strokeDashStyle": 12
+            },
+            "context": {}
+        },
+        "viz_jpZeKR2J": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.75,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_k20TEQyG": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#0877a6",
+                "strokeOpacity": 0.3,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_kBb3w79h": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.1
+            }
+        },
+        "viz_kM6K3vsd": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 2,
+                "strokeOpacity": 0.25
+            }
+        },
+        "viz_kY1KwBd3": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.1
+            }
+        },
+        "viz_kkIOIFwT": {
+            "options": {
+                "markdown": "Line Chart",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_kyx2ReqJ": {
+            "type": "splunk.rectangle",
+            "options": {
+                "strokeColor": "transparent",
+                "fillOpacity": 0.03,
+                "strokeOpacity": 0.5
+            },
+            "context": {}
+        },
+        "viz_lU3hEr86": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 2,
+                "strokeOpacity": 0.25
+            }
+        },
+        "viz_ljnFlssJ": {
+            "options": {
+                "markdown": "Main Label",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 24,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_loeHZAWw": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "#ffffff",
+                "fillOpacity": 0.7
+            },
+            "context": {}
+        },
+        "viz_lyyt1zo3": {
+            "options": {
+                "markdown": "Marker Gauge",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_ma2xZdPy": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.75,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_msx7aq1i": {
+            "options": {
+                "markdown": "Single Value Radial",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_nCJt5pIa": {
+            "options": {
+                "markdown": "Column Chart",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_nQz3G1HX": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.4,
+                "strokeDashStyle": 12
+            },
+            "context": {}
+        },
+        "viz_nkdiLuaU": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.75,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_nyyGoE1C": {
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "ds_E92whgma"
+            },
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByTypes(\"number\", \"string\")"
+            }
+        },
+        "viz_ohJDgONN": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.4,
+                "strokeDasharray": 4
+            }
+        },
+        "viz_pZHHYbCD": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.75
+            }
+        },
+        "viz_q6kcwjpg": {
+            "options": {
+                "markdown": "Bar Chart",
+                "fontSize": "custom",
+                "fontFamily": "Helvetica",
+                "customFontSize": 21,
+                "rotation": 0
+            },
+            "type": "splunk.markdown",
+            "context": {}
+        },
+        "viz_qOR4DHBm": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeWidth": 3,
+                "strokeOpacity": 0.3
+            }
+        },
+        "viz_rLi1un4H": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeWidth": 1,
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_rbOnZAun": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "#ffffff",
+                "fillOpacity": 0.7
+            },
+            "context": {}
+        },
+        "viz_s34MNyDu": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#c3cbd4",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.5
+            }
+        },
+        "viz_s9nGetJX": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#666666",
+                "strokeWidth": 3,
+                "strokeOpacity": 0.7,
+                "strokeDasharray": 70
+            }
+        },
+        "viz_u8e2FFK3": {
+            "type": "splunk.singlevalue",
+            "dataSources": {
+                "primary": "ds_Pk8qKnEe"
+            },
+            "context": {},
+            "options": {
+                "showSparklineAreaGraph": false,
+                "sparklineValues": "> primary | seriesByTypes(\"number\", \"string\")",
+                "unit": "",
+                "unitPosition": "before",
+                "backgroundColor": "transparent",
+                "showSparklineTooltip": true,
+                "sparklineStrokeColor": "#ffffff",
+                "shouldUseThousandSeparators": true,
+                "sparklineHighlightDots": 7,
+                "sparklineHighlightSegments": 6,
+                "trendDisplay": "off",
+                "sparklineDisplay": "below"
+            }
+        },
+        "viz_uOzZ8ZS4": {
+            "type": "abslayout.line",
+            "options": {
+                "toArrow": true,
+                "fromArrow": true,
+                "strokeColor": "#ffffff",
+                "strokeWidth": 5,
+                "strokeOpacity": 0.5,
+                "strokeDasharray": 8
+            }
+        },
+        "viz_uh8Yaub1": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.35,
+                "strokeDasharray": 5
+            }
+        },
+        "viz_v6sYjlfK": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "#ffffff",
+                "fillOpacity": 0.7
+            },
+            "context": {}
+        },
+        "viz_vAIRYze0": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeWidth": 1,
+                "strokeOpacity": 0.4
+            }
+        },
+        "viz_vMHlt8DJ": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#708794",
+                "strokeOpacity": 0.4,
+                "strokeDasharray": 4
+            }
+        },
+        "viz_wIin8gjj": {
+            "type": "splunk.rectangle",
+            "options": {
+                "strokeColor": "#708794",
+                "fillOpacity": 0.1,
+                "strokeOpacity": 0.5
+            },
+            "context": {}
+        },
+        "viz_xbS6p0UG": {
+            "type": "splunk.area",
+            "dataSources": {
+                "primary": "ds_B4P9O9oS",
+                "annotation": "ds_whup9VXc"
+            },
+            "options": {
+                "yAxisAbbreviation": "off",
+                "y2AxisAbbreviation": "off",
+                "showRoundedY2AxisLabels": false,
+                "legendTruncation": "ellipsisMiddle",
+                "showY2MajorGridLines": true,
+                "seriesColors": [
+                    "#666666"
+                ],
+                "backgroundColor": "transparent",
+                "legendDisplay": "off",
+                "xAxisTitleVisibility": "hide",
+                "yAxisTitleVisibility": "hide",
+                "annotationX": "> annotation | seriesByName(\"_time\")",
+                "annotationColor": "> annotation | seriesByName(\"annotation_color\")",
+                "annotationLabel": "> annotation | seriesByName(\"annotation_label\")"
+            },
+            "context": {}
+        },
+        "viz_xy05CfMZ": {
+            "type": "splunk.ellipse",
+            "options": {
+                "fillColor": "transparent",
+                "strokeColor": "#ffffff",
+                "strokeWidth": 7,
+                "strokeOpacity": 0.4,
+                "strokeDashStyle": 12
+            },
+            "context": {}
+        },
+        "viz_yoN8SHiD": {
+            "type": "abslayout.line",
+            "options": {
+                "strokeColor": "#ffffff",
+                "strokeOpacity": 0.75,
+                "strokeDasharray": 8
+            }
+        }
+    }
 }

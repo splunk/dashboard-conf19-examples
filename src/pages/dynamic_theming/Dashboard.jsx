@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { useCallback, useState } from 'react';
 import Select from '@splunk/react-ui/Select';
-import styled, { ThemeProvider } from 'styled-components';
-import { themes as reactUIThemes } from '@splunk/react-ui/themes';
-import DashboardCore, { themes as dashboardCoreThemes } from '@splunk/dashboard-core';
-import EnterpriseViewOnlyPreset, {
-    themes as presetThemes,
-} from '@splunk/dashboard-presets/EnterpriseViewOnlyPreset';
+import styled from 'styled-components';
+import DashboardCore from '@splunk/dashboard-core';
+import EnterpriseViewOnlyPreset from '@splunk/dashboard-presets/EnterpriseViewOnlyPreset';
+import { SplunkThemeProvider } from '@splunk/themes';
+import { DashboardContextProvider } from '@splunk/dashboard-context';
 import definition from './definition.json';
 
 const Container = styled.div`
@@ -19,47 +18,28 @@ const ThemeSwitcher = styled.div`
     z-index: 100;
 `;
 
-class Dashboard extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            themeId: 'enterpriseDark',
-        };
-        this.handleThemeChange = this.handleThemeChange.bind(this);
-    }
+function Dashboard() {
+    const [color, setColor] = useState('dark');
 
-    handleThemeChange(e, { value }) {
-        this.setState({
-            themeId: value,
-        });
-    }
+    const handleColorChange = useCallback((_e, { value }) => {
+        setColor(value);
+    }, []);
 
-    render() {
-        const { themeId } = this.state;
-        const theme = {
-            ...presetThemes[themeId],
-            ...dashboardCoreThemes[themeId],
-            ...reactUIThemes[themeId],
-        };
-        return (
-            <ThemeProvider theme={theme}>
-                <Container>
-                    <ThemeSwitcher>
-                        <Select value={themeId} onChange={this.handleThemeChange}>
-                            <Select.Option label="Enterprise" value="enterprise" />
-                            <Select.Option label="EnterpriseDark" value="enterpriseDark" />
-                        </Select>
-                    </ThemeSwitcher>
-                    <DashboardCore
-                        width="100%"
-                        height="calc(100vh - 78px)"
-                        definition={definition}
-                        preset={EnterpriseViewOnlyPreset}
-                    />
-                </Container>
-            </ThemeProvider>
-        );
-    }
+    return (
+        <SplunkThemeProvider family="enterprise" colorScheme={color} density="comfortable">
+            <Container>
+                <ThemeSwitcher>
+                    <Select value={color} onChange={handleColorChange}>
+                        <Select.Option label="Enterprise" value="light" />
+                        <Select.Option label="Enterprise Dark" value="dark" />
+                    </Select>
+                </ThemeSwitcher>
+                <DashboardContextProvider initialDefinition={definition} preset={EnterpriseViewOnlyPreset}>
+                    <DashboardCore width="100%" height="calc(100vh - 78px)" />
+                </DashboardContextProvider>
+            </Container>
+        </SplunkThemeProvider>
+    );
 }
 
 export default Dashboard;
